@@ -1,3 +1,7 @@
+# the following are needed so should be left commented
+# .dotfiles-nix
+
+
 # SURE NOT NEEDED
 .anacron.log
 .crontab-backup.txt
@@ -23,7 +27,6 @@ Pictures/
 .cert/
 .bashrc 
 .config 
-.dotfiles-nix
 .dscripts/
 .emacs.d/
 .gitconfig/
