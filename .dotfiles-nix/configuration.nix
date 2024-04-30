@@ -60,7 +60,7 @@
     xdg.portal = {
       enable = true;
       extraPortals = [
-        pkgs.xdg-desktop-portal-kde
+        # REMOVING KDE STUFF pkgs.xdg-desktop-portal-kde
         pkgs.xdg-desktop-portal-gnome
         # pkgs.xdg-desktop-portal-hyprland # automatically starts when hyprland is enabled so dont add it here!
       ];
