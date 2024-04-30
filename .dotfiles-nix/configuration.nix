@@ -24,12 +24,11 @@
   services.flatpak.enable = true; # for scrivano application download needed
   services.upower.enable = true; # for ags needed
   services.udisks2.enable = true;
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacs;
-  };
-  systemd.user.services.udiskie = {
-    description = "Automount service using udiskie for user devices";
+  # REM30 services.emacs = {
+  # REM30  enable = true;
+  # REM30 package = pkgs.emacs;
+  # REM30 };
+  systemd.user.services.udiskie = { description = "Automount service using udiskie for user devices";
     after = [ "graphical-session-pre.target" ];
     wantedBy = [ "graphical-session.target" ];
     serviceConfig = {
@@ -46,6 +45,8 @@
   xdg.portal = {
     enable = true;
     extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
       ## do not add this: pkgs.xdg-desktop-portal-hyprland  (it is already included)
     ];
     wlr.enable = true; # screen sharing
@@ -62,6 +63,12 @@
     shell = pkgs.zsh;
   };
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+      (import (builtins.fetchTarball {
+        url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+        sha256 = "0pl7rphx1idq4b8v3w2jarxqiwqvgrkw9m7a6jwhx2ani5pcpn32";
+      }))
+  ];
 
   # Shells
   environment.shells = with pkgs; [ bash zsh ];
@@ -74,61 +81,59 @@
     fsType = lib.mkDefault "ext4";
   };
   fileSystems."/boot" = {
-    device = lib.mkDefault "/dev/nvme0n1p1";
-    fsType = lib.mkDefault "vfat";
+    device = lib.mkDefault "/dev/nvme0n1p1"; fsType = lib.mkDefault "vfat";
   };
   environment.systemPackages = with pkgs; [
-      # essential editors,utils
+      # [COMMON] utils, editors, terminal programs, language support, ...
+      # not sure if we need all of this but who cares, just keep them all
       vim_configurable neovim pciutils lshw kitty wget os-prober gh udiskie udisks2
-      # wireless
+      arch-install-scripts acpi gjs gnomeExtensions.eval-gjs killall rsync hollywood
+      brightnessctl axel cpio fcitx5 tree glm glow conky tk dart-sass tinyxml-2 cargo
+      tkimg tree-sitter silver-searcher sassc ueberzug tesseract imagemagick
+      inotify-tools mdcat webp-pixbuf-loader gojq gcc gtk3 gtk4 git git-extras
+      bat fd catimg asciidoctor-with-extensions readability-cli dhcpcd djvulibre
+      ffmpegthumbnailer efibootmgr gparted ldc lsd neofetch ack cups ntfs3g rclone
+      tmux lazygit ripgrep unzip speechd signify yad ydotool coreutils clang
+
+      # [OS]
+      emacs-git # =emacsGcc (see overlays) installs emacs 28 + native-comp
+
+      # [WIRELESS] utils, ...
+      iw iwd
       wpa_supplicant wpa_supplicant_ro_ssids wpa_supplicant_gui
-      # packages for libdbusmenu ???
+
+      # [GRAPHICAL] stuff for wayland / hyprland and utils and drivers, nvidia/survace
       libdbusmenu libsForQt5.libdbusmenu libdbusmenu-gtk3 libdbusmenu-gtk2
-      # gnome bluetooth (needed for ags ???)
-      gnome.gnome-bluetooth gnome.gnome-bluetooth_1_0 gnomeExtensions.bluetooth-battery
-      # utils and drivers, nvidia/surface
+      qt5.qtimageformats
+      xwaylandvideobridge libsForQt5.layer-shell-qt
       libva libwacom-surface surface-control zenith-nvidia
+      # some random drivers might or might not do anything
+      xorg.xf86videointel xorg.xf86inputmouse xf86_input_wacom xorg.xf86videovesa
+      # we add some xorg support that might come in handy for some compatibility idk
+      xorg.xset xorg.xrdb xorg.setxkbmap xorg.xrandr
+      # needed for our sugardark sddm theme:
+      libsForQt5.qt5.qtquickcontrols2 libsForQt5.qt5.qtgraphicaleffects
+
+      # [AUTH KEYRING] polkit, keyring, auth
+      polkit_gnome gnome.gnome-keyring
+
+      # [BLUETOOTH] gnome bluetooth
+      gnome.gnome-bluetooth gnome.gnome-bluetooth_1_0 gnomeExtensions.bluetooth-battery
+      
+      
 
       ### KDE STUFF THAT MIGHT BE USEFUL ###
-      # REM30.4 kdePackages.kwallet # Or just the libraries w/o graphical: libsForQt5.kwallet
-      # REM30.4 kdePackages.kwalletmanager
-      # REM30.4 kwallet-pam
-      # REM30.4 kwalletcli
-      # REM30.4 kdePackages.kwallet-pam
-      # REM30.4 kdePackages.drkonqi # Crash handler for KDE software. Probably not needed.
-      # REM30.4 kwayland-integration
+      # REM30.4 kdePackages.kwallet kdePackages.kwalletmanager kwallet-pam kwalletcli kdePackages.kwallet-pam kdePackages.drkonqi kwayland-integration plasma-vault kdePackages.print-manager kdePackages.qtwayland
 
-      # polkit, keyring, auth
-      polkit_gnome
-      gnome.gnome-keyring
-
-      # REM30.4 libsForQt5.layer-shell-qt
-      # REM30.4 plasma-vault
-
-      # the following two packages needed for sugardark sddm theme to work properly:
-      libsForQt5.qt5.qtquickcontrols2
-      libsForQt5.qt5.qtgraphicaleffects
-
-      # REM30.4 kdePackages.print-manager
       # qt6-wayland     -- not found on nixos pkgs
-      # REM30.4 kdePackages.qtwayland
-
-      # Icon themes:
-      gnome-icon-theme
-      papirus-icon-theme
-      numix-icon-theme
-      iconpack-obsidian
-      iconpack-jade
-
       # TODO: other CRITICAL THINGS THAT HAVE NO EQUIVALENT PACKAGES
       # TODO: CHECK IF GPU IS ACTUALLY WORKING!!!
       # linux-surface
       # linux-surface-headers
       # libwacom-surface  -- might need some additional configuration as well here!
     ];
-
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
+    
+    # ???
     # programs.mtr.enable = true;
     # programs.gnupg.agent = {
     #   enable = true;

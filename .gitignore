@@ -11,7 +11,8 @@
 .bash_history
 .bash_history-*.tmp
 OneDrive.2024.29.04.bak/
-
+.hplip/
+.nvidia-settings-rc
 test.scrvn
 Documents/
 Downloads/
