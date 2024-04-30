@@ -5,6 +5,10 @@
 { config,lib,pkgs,inputs,... }:
 
 {
+  time.timeZone = "Europe/Zurich";
+  i18n.defaultLocale = "en_US.UTF-8";
+  console.keyMap = "sg";
+
   imports = [
       ./hardware-configuration.nix # never remove this
       ./hardware/nvidia.nix
@@ -16,17 +20,14 @@
       ./system/bluetooth_and_sound.nix
       ./system/themes/sddm-theme.nix
     ];
-	
+
   services.flatpak.enable = true; # for scrivano application download needed
   services.upower.enable = true; # for ags needed
   services.udisks2.enable = true;
-  
   services.emacs = {
     enable = true;
     package = pkgs.emacs;
   };
-
-
   systemd.user.services.udiskie = {
     description = "Automount service using udiskie for user devices";
     after = [ "graphical-session-pre.target" ];
@@ -36,136 +37,81 @@
       Restart = "always";
     };
   };
-  
-  # Experimental (Domi)
-  # TODO: this really should not be here
-  # this is not good practice.
-  # environment.variables.GITHUB_TOKEN = "";
-    
-    networking.hostName = "nixos"; # Define your hostname.
-    #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "nixos"; # Define your hostname.
+  networking.networkmanager.enable = true;
+  services.xserver = {
+    xkb.layout = "ch";
+    xkb.variant = "";
+  };
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      ## do not add this: pkgs.xdg-desktop-portal-hyprland  (it is already included)
+    ];
+    wlr.enable = true; # screen sharing
+  };
+  systemd.user.services.xdg-desktop-portal-hyprland = {
+    wantedBy = [ "xdg-desktop-portal.service" ];
+    before = [ "xdg-desktop-portal.service" ];
+  };
+  users.users.domi = {
+    isNormalUser = true;
+    description = "domi";
+    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
+    packages = with pkgs; [];
+    shell = pkgs.zsh;
+  };
+  nixpkgs.config.allowUnfree = true;
 
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-    networking.networkmanager.enable = true;
-    time.timeZone = "Europe/Zurich";
-    i18n.defaultLocale = "en_US.UTF-8";
-
-    # Configure keymap in X11
-    services.xserver = {
-      xkb.layout = "ch";
-      xkb.variant = "";
-    };
-    xdg.portal = {
-      enable = true;
-      extraPortals = [
-        # REMOVING KDE STUFF pkgs.xdg-desktop-portal-kde
-        pkgs.xdg-desktop-portal-gnome
-        # pkgs.xdg-desktop-portal-hyprland # automatically starts when hyprland is enabled so dont add it here!
-      ];
-      wlr.enable = true; # screen sharing
-    };
-    systemd.user.services.xdg-desktop-portal-hyprland = {
-      wantedBy = [ "xdg-desktop-portal.service" ];
-      before = [ "xdg-desktop-portal.service" ];
-    };
-
-    
-
-    # Configure console keymap
-    console.keyMap = "sg";
-
-    # Define a user account. Don't forget to set a password with ‘passwd’.
-    users.users.domi = {
-      isNormalUser = true;
-      description = "domi";
-      extraGroups = [ "networkmanager" "wheel" "video" "input" ];
-      packages = with pkgs; [];
-      shell = pkgs.zsh;
-    };
-
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
-
-    # Shells
-    environment.shells = with pkgs; [ bash zsh ];
-    #users.defaultUserShell = pkgs.zsh;
-    users.defaultUserShell = pkgs.bash;
-    programs.zsh.enable = true;
-
-
-    environment.variables.EDITOR = "nvim";
-
-    fileSystems."/" = {
-	device = lib.mkDefault "/dev/nvme0n1p3";
-	fsType = lib.mkDefault "ext4";
-    };
-    fileSystems."/boot" = {
-        device = lib.mkDefault "/dev/nvme0n1p1";
-	fsType = lib.mkDefault "vfat";
-    };
-
-    # List packages installed in system profile. To search, run:
-    # $ nix search wget
-    environment.systemPackages = with pkgs; [
-      vim_configurable
-      neovim
-      pciutils
-      lshw
-      kitty
-      wget
-      os-prober
-      gh
-
-      wpa_supplicant
-      wpa_supplicant_ro_ssids
-      wpa_supplicant_gui
-
-      udiskie
-      udisks2
-
-
-      libdbusmenu
-      libsForQt5.libdbusmenu
-      libdbusmenu-gtk3
-      libdbusmenu-gtk2
-      gnome.gnome-bluetooth # ags?
-      gnome.gnome-bluetooth_1_0 # ags?
-      gnomeExtensions.bluetooth-battery # ags?
-
-      
-      ### DRIVERS specific for nvidia etc that might be useful ###
-      libva             # An implementation for VA-API (Video Acceleration API)
-      libwacom-surface  # Libraries, configuration, and diagnostic tools for Wacom tablets running under linux
-      surface-control   # Control various aspects of Microsoft Surface devices on Linux from the Command-Line
-      zenith-nvidia     # zenith shows us some information about usage of GPU
+  # Shells
+  environment.shells = with pkgs; [ bash zsh ];
+  #users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.bash;
+  programs.zsh.enable = true;
+  environment.variables.EDITOR = "nvim";
+  fileSystems."/" = {
+    device = lib.mkDefault "/dev/nvme0n1p3";
+    fsType = lib.mkDefault "ext4";
+  };
+  fileSystems."/boot" = {
+    device = lib.mkDefault "/dev/nvme0n1p1";
+    fsType = lib.mkDefault "vfat";
+  };
+  environment.systemPackages = with pkgs; [
+      # essential editors,utils
+      vim_configurable neovim pciutils lshw kitty wget os-prober gh udiskie udisks2
+      # wireless
+      wpa_supplicant wpa_supplicant_ro_ssids wpa_supplicant_gui
+      # packages for libdbusmenu ???
+      libdbusmenu libsForQt5.libdbusmenu libdbusmenu-gtk3 libdbusmenu-gtk2
+      # gnome bluetooth (needed for ags ???)
+      gnome.gnome-bluetooth gnome.gnome-bluetooth_1_0 gnomeExtensions.bluetooth-battery
+      # utils and drivers, nvidia/surface
+      libva libwacom-surface surface-control zenith-nvidia
 
       ### KDE STUFF THAT MIGHT BE USEFUL ###
-      #ksshaskpass		# From KDE, could be useful (maybe remove later)
-      #libsForQt5.ksshaskpass # From KDE, could be useful (maybe remove later)
-      kdePackages.kwallet # Or just the libraries w/o graphical: libsForQt5.kwallet
-      kdePackages.kwalletmanager
-      kwallet-pam
-      kwalletcli
-      kdePackages.kwallet-pam
-      kdePackages.drkonqi # Crash handler for KDE software. Probably not needed.
-      kwayland-integration
+      # REM30.4 kdePackages.kwallet # Or just the libraries w/o graphical: libsForQt5.kwallet
+      # REM30.4 kdePackages.kwalletmanager
+      # REM30.4 kwallet-pam
+      # REM30.4 kwalletcli
+      # REM30.4 kdePackages.kwallet-pam
+      # REM30.4 kdePackages.drkonqi # Crash handler for KDE software. Probably not needed.
+      # REM30.4 kwayland-integration
 
-      # we probably will remove the kwallet and use polkit-gnome if that works... :
+      # polkit, keyring, auth
       polkit_gnome
       gnome.gnome-keyring
 
-      libsForQt5.layer-shell-qt
-      plasma-vault
+      # REM30.4 libsForQt5.layer-shell-qt
+      # REM30.4 plasma-vault
 
       # the following two packages needed for sugardark sddm theme to work properly:
       libsForQt5.qt5.qtquickcontrols2
       libsForQt5.qt5.qtgraphicaleffects
 
-      kdePackages.print-manager
+      # REM30.4 kdePackages.print-manager
       # qt6-wayland     -- not found on nixos pkgs
-      kdePackages.qtwayland
+      # REM30.4 kdePackages.qtwayland
 
       # Icon themes:
       gnome-icon-theme
@@ -174,18 +120,11 @@
       iconpack-obsidian
       iconpack-jade
 
-
-
-
-      preload
-      nodePackages.npm
       # TODO: other CRITICAL THINGS THAT HAVE NO EQUIVALENT PACKAGES
+      # TODO: CHECK IF GPU IS ACTUALLY WORKING!!!
       # linux-surface
       # linux-surface-headers
       # libwacom-surface  -- might need some additional configuration as well here!
-      # nvidia-dkms -- probably need to integrate this using the nvidia page on the nixos wiki.
-
-      # TODO: CHECK IF GPU IS ACTUALLY WORKING!!!
     ];
 
     # Some programs need SUID wrappers, can be configured further or are
@@ -210,19 +149,19 @@
     # TODO: Setup OpenSSH with keys
     # users.(...).openssh = {}
    
-    # wayland.windowManager.hyprland.enable = true;
     # npm
     programs.npm.enable = true;
+
     # Hyprland
     programs.hyprland.enable = true;
     programs.hyprland.xwayland.enable = true;
-    #programs.hyprland.package = inputs.hyprland;#inputs.hyprland;#inputs.packages."${pkgs.system}".hyprland;
     programs.hyprland.package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     programs.xwayland.enable = true;
     environment.sessionVariables = rec {
       NIXOS_OZONE_WL = "1";
       NIXPKGS_ALLOW_UNFREE = "1";
     };
+
     # SDDM
     services.xserver.videoDrivers = [ "nvidia" "modesetting" "vesa" "intel" ];
     services.displayManager.sddm.enable = true;
@@ -233,6 +172,7 @@
       ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
     '';
     services.xserver.enable = true;
+    security.polkit.enable = true;
     security.pam.services.login = {#sddm = {
       kwallet.enable = true;
       enableKwallet = true;
@@ -251,7 +191,6 @@
 
     # Enable the OpenSSH daemon.
     services.openssh.enable = true;
-    #services.openssh.settings.passwordAuthentication = false; # idk about that what this does...
 
     # Enable iptsd (Userspace daemon for Intel Precise Touch & Stylus
     services.iptsd.enable = true;
@@ -288,8 +227,6 @@
 
     # WE ADD ABILITY FOR FLAKES
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-    # For not building anyrun locally
     nix.settings = {
       builders-use-substitutes = true;
       # substituters to use
@@ -299,7 +236,6 @@
           "https://cache.nixos.org/"
           "https://hyprland.cachix.org"
       ];
-
       trusted-public-keys = [
           "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="

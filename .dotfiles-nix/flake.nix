@@ -10,28 +10,23 @@
 				inputs.nixpkgs.follows = "nixpkgs";
 			};
 
-      # inputs add anyrun
-
-      #nix run github:Kirottu/anyrun#anyrun-with-all-plugins
       anyrun.url = "github:Kirottu/anyrun";
       anyrun.inputs.nixpkgs.follows = "nixpkgs";
 
-			# inputs add ags
 			ags.url = "github:Aylur/ags";
 
-      # inputs add hyprgrass plugin for hyprland
       hyprland.url = "github:hyprwm/Hyprland";
       hyprgrass = {
         url = "github:horriblename/hyprgrass";
         inputs.hyprland.follows = "hyprland"; # IMPORTANT
       };
-
       hyprland-plugins = {
         url = "github:hyprwm/hyprland-plugins";
         inputs.hyprland.follows = "hyprland";
       };
-
-      pyprland.url = "github:hyprland-community/pyprland";
+      pyprland =  {
+        url = "github:hyprland-community/pyprland";
+      };
 
 		};
 
