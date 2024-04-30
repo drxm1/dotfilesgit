@@ -10,6 +10,7 @@
 .domi_journalctl.txt
 .bash_history
 .bash_history-*.tmp
+OneDrive.2024.29.04.bak/
 
 test.scrvn
 Documents/
@@ -26,7 +27,6 @@ Pictures/
 .cache/
 .cert/
 .bashrc 
-.config 
 .dscripts/
 .emacs.d/
 .gitconfig/

@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let
 	username = "domi"; 
@@ -19,8 +19,6 @@ in
     ./home/${username}/git.nix
     ./home/${username}/eww.nix
     ./home/${username}/ags.nix
-    # ./home/${username}/gtk.nix
-    # ./home/${username}/qt.nix
     ./home/${username}/theming.nix
     ./home/${username}/dunst.nix
     ./home/${username}/hyprland.nix
@@ -28,5 +26,11 @@ in
     ./home/${username}/session-variables.nix
     inputs.ags.homeManagerModules.default
   ];
+
+  home.activation.createConfigLink = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    ln -sfn /home/domi/.dotfiles-nix/home/domi/dotconfig/eww $HOME/.config/eww
+  ''; # Create a (for some reason readonly) symbolic link. for some reason also not editable here...
+
+  # TODO: Create the other symbolic links.
 
 }

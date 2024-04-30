@@ -32,7 +32,6 @@
       };
 
       pyprland.url = "github:hyprland-community/pyprland";
-      pyprland.inputs.hyprland.follows = "hyprland";
 
 		};
 

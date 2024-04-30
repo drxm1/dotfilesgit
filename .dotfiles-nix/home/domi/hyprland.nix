@@ -18,7 +18,7 @@
     # systemd.extraCommands = ...;
     plugins = [
        inputs.hyprgrass.packages.${pkgs.system}.default
-       inputs.hyprland-plugins.packages."${pkgs.system}".borders-plus-plus
+       # inputs.hyprland-plugins.packages."${pkgs.system}".borders-plus-plus
     ];
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     

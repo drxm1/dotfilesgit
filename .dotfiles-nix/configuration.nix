@@ -17,16 +17,15 @@
       ./system/themes/sddm-theme.nix
     ];
 	
-  services.flatpak.enable = true;
-  # need upower service running for ags battery service
-  services.upower.enable = true;
+  services.flatpak.enable = true; # for scrivano application download needed
+  services.upower.enable = true; # for ags needed
+  services.udisks2.enable = true;
   
   services.emacs = {
     enable = true;
-    package = pkgs.emacs; # replace with emacs-gtk, or a version provided by the community overlay if desired.
+    package = pkgs.emacs;
   };
 
-  services.udisks2.enable = true;
 
   systemd.user.services.udiskie = {
     description = "Automount service using udiskie for user devices";
@@ -152,6 +151,11 @@
       kdePackages.kwallet-pam
       kdePackages.drkonqi # Crash handler for KDE software. Probably not needed.
       kwayland-integration
+
+      # we probably will remove the kwallet and use polkit-gnome if that works... :
+      polkit_gnome
+      gnome.gnome-keyring
+
       libsForQt5.layer-shell-qt
       plasma-vault
 
@@ -169,6 +173,8 @@
       numix-icon-theme
       iconpack-obsidian
       iconpack-jade
+
+
 
 
       preload
@@ -218,8 +224,14 @@
       NIXPKGS_ALLOW_UNFREE = "1";
     };
     # SDDM
-    services.xserver.videoDrivers = [ "nvidia" "modesetting" "vesa"];
+    services.xserver.videoDrivers = [ "nvidia" "modesetting" "vesa" "intel" ];
     services.displayManager.sddm.enable = true;
+    services.displayManager.sddm.settings.General.LogLevel = "debug";
+    services.displayManager.sddm.wayland.enable = true;
+    services.xserver.displayManager.sessionCommands = ''
+      ${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon --start --components=secrets &
+      ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
+    '';
     services.xserver.enable = true;
     security.pam.services.login = {#sddm = {
       kwallet.enable = true;
