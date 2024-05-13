@@ -1,14 +1,9 @@
-# the following are needed so should be left commented
-# .dotfiles-nix
 
 
-# This one should be saved on an external disk:
-# It contains the gitcrypt keys and maybe others later as well.
-.domi_keys/
-.git-crypt/
-
-# SURE NOT NEEDED
+# This is the --bare git dotfilesgit repo
+# ALIAS: dotfilesgit = "git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME";
 .dotfiles.git
+
 .anacron.log
 .crontab-backup.txt
 .domi_hyprlog.sh
@@ -27,14 +22,88 @@ Downloads/
 OneDrive/
 dev/
 
-
+### Unneeded configuration directories in .config
 .config/discord/
 .config/eww.bak/
 .config/chezmoi/
 .config/kde.org/
 .config/Proton/
+.config/BraveSoftware/
+.config/GIMP/
+.config/QtProject.conf
+.config/TMP/
+.config/Thunar/
+.config/ags.backup2/
+.config/ssh/known_hosts
+.config/anyrun/
+.config/cat_installer/
+.config/cef_user_data/
+.config/dconf/
+.config/dolphinrc
+.config/dunst/
+.config/gemini_history.json
+.config/gh/
+.config/home-manager/
+.config/htop/
+.config/kdeglobals
+.config/kwalletrc
+.config/lazygit/
+.config/libreoffice/
+.config/nautilus/
+.config/neofetch/
+.config/okularpartrc
+.config/okularrc
+.config/onedrive/items*
+.config/onedrive/refresh_token
+.config/onedrive/.config.backup
+.config/onedrive/.config.hash
+.config/onedrive/resume_upload
+.config/pulse/
+.config/qutebrowser/
+.config/smplayer/
+.config/session/
+.config/systemmonitorrc
+.config/vlc/
+.config/xournalpp/
+# might include thunar config that we could add later:
+.config/xfce4/
+# Would actually add this but it seems like some important files were lost there:
+# The lost files are /usr/share/qt6ct/colors/darker.conf and maybe more
+.config/qt6ct/
 
-# ??? CHECK
+### Needed configuration directories in .config that are symlinked by home-manager
+.config/systemd/
+.config/eww
+.config/environment.d
+.config/git/config
+.config/gtk-3.0/
+.config/gtk-4.0/
+# All the other hyprland configuration files are kept under version control,
+# but the main hyprland.conf that just imports these is managed by home-manager!
+.config/hypr/hyprland.conf
+
+# Encryption related stuff NEVER on source control
+.domi_keys/
+.git-crypt/
+.ssh/id_ed*
+.ssh/known_hosts.old
+.ssh/known_hosts
+.ssh/authorized_keys
+.ssh/id_rsa
+.ssh/id_dsa
+.ssh/id_ecdsa
+.ssh/id_ecdsa_sk
+.ssh/id_ed25519
+.ssh/id_ed25519_sk
+.ssh/id_xmss
+.ssh/*.pem
+.ssh/*.key
+
+# Zoom configurations also not on source control
+.config/zoom.conf
+.config/zoomus.conf
+
+###### CHECK ######
 Pictures/
 .gitconfig
 .anacrontab
@@ -62,7 +131,6 @@ Pictures/
 .npm/
 .pki/
 .profile
-.ssh/
 .steam/
 .steampath
 .steampid
@@ -72,6 +140,5 @@ Pictures/
 .zcompdump
 .zsh_history
 .zshrc
-
-
+.config/gtk-2.0/
 
