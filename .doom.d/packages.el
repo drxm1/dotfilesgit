@@ -48,3 +48,11 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
+
+;;; DOMI DOMI DOMI
+;;;
+
+(package! org-super-agenda) ; NOTE we arent even really using org-super agenda right now...
+
+; FIXME
+; (package! typst-ts-mode)

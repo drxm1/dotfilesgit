@@ -33,4 +33,12 @@ in
 
   # TODO: Create the other symbolic links.
 
+  programs.gpg = {
+    enable = true;
+  };
+  services.gpg-agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-qt;
+  };
+
 }

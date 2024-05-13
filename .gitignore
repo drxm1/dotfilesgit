@@ -2,6 +2,10 @@
 # .dotfiles-nix
 
 
+# This one should be saved on an external disk:
+# It contains the gitcrypt keys and maybe others later as well.
+.domi_keys
+
 # SURE NOT NEEDED
 .anacron.log
 .crontab-backup.txt
@@ -13,11 +17,20 @@
 OneDrive.2024.29.04.bak/
 .hplip/
 .nvidia-settings-rc
+.nbrc
+.lesshsQ
 test.scrvn
 Documents/
 Downloads/
 OneDrive/
 dev/
+
+
+.config/discord/
+.config/eww.bak/
+.config/chezmoi/
+.config/kde.org/
+.config/Proton/
 
 # ??? CHECK
 Pictures/

@@ -38,7 +38,7 @@
     adw-gtk3 gtk3-x11 gradience
 
     # [QT]
-    kdePackages.qt6gtk2 qt5ct qt6ct
+    kdePackages.qt6gtk2 qt5ct qt6ct pinentry-qt
 
     # [WAYLAND] utils
     cliphist slurp swaylock swww waypaper swappy

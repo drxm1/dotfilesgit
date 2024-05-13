@@ -74,3 +74,78 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+
+;;; START PERSONAL CONFIG
+
+;;
+;; Since we have a git repo in our $HOME for the dotfiles,
+;; we probably need these tweaks:
+(setq projectile-project-search-path
+'("~/.config/hypr/" "~/.config/ags/" "~/.config/nvim/"
+"~/dev" "~/.doom.d/"))
+(after! projectile
+;(add-to-list 'projectile-project-root-files-bottom-up ".git")
+;(add-to-list 'projectile-project-root-files-bottom-up ".gitignore")
+(setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up))
+;(setq projectile-project-root-files-bottom-up (remove ".gitignore" projectile-project-root-files-bottom-up))
+;(add-to-list 'projectile-ignored-projects "~/")
+;(setq projectile-ignored-project-function
+;     (lambda (project-root)
+;        (equal project-root (expand-file-name "~/"))))
+)
+
+;; TODO / FIXME
+;; our first attempt of supporting typst here
+;(add-to-list 'treesit-language-source-alist
+;             '(typst "https://github.com/uben0/tree-sitter-typst"))
+;(treesit-install-language-grammar 'typst)
+;(use-package! typst-ts-mode) ; should also do the settings and stuff
+;(setq consult-imenu-config
+;      (append consult-imenu-config
+;              '((typst-ts-mode :topLevel "Headings" :types
+;                          ((?h "Headings" typst-ts-markup-header-face)
+;                           (?f "Functions" font-lock-function-name-face))))))
+
+;; NOTE we arent even using it...
+;; Emacs Doom E05: Installing Packages with org-super-agenda as an example
+(use-package! org-super-agenda
+  :after org-agenda
+  :init
+  (setq org-super-agenda-groups '((:name "Today"
+                                        :time-grid t
+                                        :scheduled today)
+                                  (:name "Due today"
+                                         :deadline today)
+                                  (:name "Important"
+                                         :priority "A")
+                                  (:name "Overdue"
+                                         :deadline past)
+                                  (:name "Due soon"
+                                         :deadline future)
+                                  (:name "Big Outcomes"
+                                         :tag "bo")))
+  :config
+  (org-super-agenda-mode))
+
+;; NOTE
+;; Emacs Doom E06 - evil snipe: quick horizontal movements
+;; This functionality already exists but evil snipe will improve and
+;; also allow s for kangaroo jumps with two letters etc.
+;; ALREADY ENABLED...
+;; ............................
+
+;; NOTE
+;; Emacs Doom E07 - avy: moving the screen easily
+;; g + s + SPACE ...
+(setq avy-all-windows t)
+
+;; NOTE
+;; Emacs Doom E08
+;; evil-multiedit package - already installed
+
+;; NOTE Dired
+(evil-define-key 'normal dired-mode-map
+  (kbd "h") 'dired-up-directory
+  (kbd "l") 'dired-open-file
+  )

@@ -94,6 +94,7 @@
       bat fd catimg asciidoctor-with-extensions readability-cli dhcpcd djvulibre
       ffmpegthumbnailer efibootmgr gparted ldc lsd neofetch ack cups ntfs3g rclone
       tmux lazygit ripgrep unzip speechd signify yad ydotool coreutils clang
+      pandoc shellcheck git-crypt gnupg
 
       # [OS]
       emacs-git # =emacsGcc (see overlays) installs emacs 28 + native-comp
