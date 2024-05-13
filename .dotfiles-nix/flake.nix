@@ -10,8 +10,8 @@
 				inputs.nixpkgs.follows = "nixpkgs";
 			};
 
-      anyrun.url = "github:Kirottu/anyrun";
-      anyrun.inputs.nixpkgs.follows = "nixpkgs";
+      #anyrun.url = "github:Kirottu/anyrun";
+      #anyrun.inputs.nixpkgs.follows = "nixpkgs";
 
 			ags.url = "github:Aylur/ags";
 
@@ -32,7 +32,7 @@
 
 	outputs = 
 		# TODO: what does this @inputs notation do?
-		{ self, nixpkgs, nixos-hardware, home-manager, anyrun, ags, hyprgrass, hyprland, ... }@inputs:
+		{ self, nixpkgs, nixos-hardware, home-manager, ags, hyprgrass, hyprland, ... }@inputs:
 		let
 		  lib = nixpkgs.lib;
 		  system = "x86_64-linux";

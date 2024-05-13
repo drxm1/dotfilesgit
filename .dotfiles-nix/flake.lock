@@ -18,27 +18,6 @@
         "type": "github"
       }
     },
-    "anyrun": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1713259062,
-        "narHash": "sha256-WTO84hUL8IlNuHDK2yOCeJ38EewFzGt5E0kzBjNWxa8=",
-        "owner": "Kirottu",
-        "repo": "anyrun",
-        "rev": "f9d30e34fa4ccb2797c6becec37e8bcff6585d39",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Kirottu",
-        "repo": "anyrun",
-        "type": "github"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -52,27 +31,6 @@
       "original": {
         "owner": "edolstra",
         "repo": "flake-compat",
-        "type": "github"
-      }
-    },
-    "flake-parts": {
-      "inputs": {
-        "nixpkgs-lib": [
-          "anyrun",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1696343447,
-        "narHash": "sha256-B2xAZKLkkeRFG5XcHHSXXcP7To9Xzr59KXeZiRf4vdQ=",
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
-        "rev": "c9afaba3dfa4085dbd2ccb38dfade5141e33d9d4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hercules-ci",
-        "repo": "flake-parts",
         "type": "github"
       }
     },
@@ -101,11 +59,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715077503,
-        "narHash": "sha256-AfHQshzLQfUqk/efMtdebHaQHqVntCMjhymQzVFLes0=",
+        "lastModified": 1715486357,
+        "narHash": "sha256-4pRuzsHZOW5W4CsXI9uhKtiJeQSUoe1d2M9mWU98HC4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6e277d9566de9976f47228dd8c580b97488734d4",
+        "rev": "44677a1c96810a8e8c4ffaeaad10c842402647c1",
         "type": "github"
       },
       "original": {
@@ -151,11 +109,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714156846,
-        "narHash": "sha256-h0L8burwYwnO94M+jOXgcSKDPADrn0nGR79plFmVUcI=",
+        "lastModified": 1715521117,
+        "narHash": "sha256-WbPHz7ENgnRvqQvmOe3EdU6i9FT6xMQHIdYdJYPCbfY=",
         "owner": "horriblename",
         "repo": "hyprgrass",
-        "rev": "b53e851499510518b69875dbba18c3f9800da53e",
+        "rev": "f888dab948219197e2870cfd261b6f87690484a7",
         "type": "github"
       },
       "original": {
@@ -174,11 +132,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1715307626,
-        "narHash": "sha256-YiLwr/YpiyKzvoXNb3FqWsZWP3VKHsPlFxJGu9KBiEc=",
+        "lastModified": 1715526061,
+        "narHash": "sha256-cVhbpdH8ln4ybFAG3yJFDTbKYTATok8cEkOM94IM0cU=",
         "ref": "refs/heads/main",
-        "rev": "337422911895bb55099e00208bff929651dcb5d2",
-        "revCount": 4656,
+        "rev": "fd35b35000fa11ce540d944966ff17c71c31fd27",
+        "revCount": 4678,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -363,11 +321,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1715266358,
-        "narHash": "sha256-doPgfj+7FFe9rfzWo1siAV2mVCasW+Bh8I1cToAXEE4=",
+        "lastModified": 1715447595,
+        "narHash": "sha256-VsVAUQOj/cS1LCOmMjAGeRksXIAdPnFIjCQ0XLkCsT0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f1010e0469db743d14519a1efd37e23f8513d714",
+        "rev": "062ca2a9370a27a35c524dc82d540e6e9824b652",
         "type": "github"
       },
       "original": {
@@ -439,11 +397,11 @@
         "systems": "systems_4"
       },
       "locked": {
-        "lastModified": 1715035909,
-        "narHash": "sha256-FprwktHqteSBxm2Ex0Duoo8+4VmSjZKcIOiYyDRx4nk=",
+        "lastModified": 1715521771,
+        "narHash": "sha256-mnUkbQ9WyAAr46JrVS+LfK/OWbKwLGKt+mPq7j06mQM=",
         "owner": "hyprland-community",
         "repo": "pyprland",
-        "rev": "82a82121439ad7fa3bad565c9354a91c0106009b",
+        "rev": "6df8f72f8b93137f4cd75d706aa2944375a849b2",
         "type": "github"
       },
       "original": {
@@ -455,7 +413,6 @@
     "root": {
       "inputs": {
         "ags": "ags",
-        "anyrun": "anyrun",
         "home-manager": "home-manager",
         "hyprgrass": "hyprgrass",
         "hyprland": "hyprland",

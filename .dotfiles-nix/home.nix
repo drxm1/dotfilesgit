@@ -15,7 +15,7 @@ in
 
   imports = [
     ./home/${username}/sh.nix
-    ./home/${username}/anyrun.nix
+    #./home/${username}/anyrun.nix
     ./home/${username}/git.nix
     ./home/${username}/eww.nix
     ./home/${username}/ags.nix

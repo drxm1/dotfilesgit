@@ -4,9 +4,11 @@
 
 # This one should be saved on an external disk:
 # It contains the gitcrypt keys and maybe others later as well.
-.domi_keys
+.domi_keys/
+.git-crypt/
 
 # SURE NOT NEEDED
+.dotfiles.git
 .anacron.log
 .crontab-backup.txt
 .domi_hyprlog.sh

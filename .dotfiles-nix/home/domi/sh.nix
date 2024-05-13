@@ -9,6 +9,7 @@ let
       ll = "ls -l --color=auto";
       grep = "grep --color=auto";
       ".." = "cd ..";
+      dotfilesgit = "git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME";
     };
 in 
 # RETURNS:

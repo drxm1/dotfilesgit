@@ -60,7 +60,7 @@
     description = "domi";
     extraGroups = [ "networkmanager" "wheel" "video" "input" ];
     packages = with pkgs; [];
-    shell = pkgs.zsh;
+    shell = pkgs.bash;
   };
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
