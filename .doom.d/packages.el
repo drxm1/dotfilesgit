@@ -51,8 +51,8 @@
 
 ;;; DOMI DOMI DOMI
 ;;;
-
+(package! doom-themes) ; NOTE nice custom themes, maybe already included in doom emacs
 (package! org-super-agenda) ; NOTE we arent even really using org-super agenda right now...
 
-; FIXME
-; (package! typst-ts-mode)
+(package! typst-ts-mode
+  :recipe (:host sourcehut :repo "meow_king/typst-ts-mode"))

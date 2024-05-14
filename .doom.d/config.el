@@ -3,11 +3,8 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
+(setq user-full-name "Dominik Rosser"
+      user-mail-address "dominik.rosser@protonmail.ch")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -17,6 +14,13 @@
 ;;   presentations or streaming.
 ;; - `doom-symbol-font' -- for symbols
 ;; - `doom-serif-font' -- for the `fixed-pitch-serif' face
+
+;; Set the FiraCode Nerd Font
+(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 20)
+      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 20)
+      doom-big-font (font-spec :family "FiraCode Nerd Font" :size 26)
+      doom-symbol-font (font-spec :family "FiraCode Nerd Font" :size 20)
+      doom-serif-font (font-spec :family "FiraCode Nerd Font" :weight 'light))
 ;;
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
@@ -29,24 +33,25 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;; Doom Theme
+;(setq doom-theme 'doom-one)            ; 2
+;(setq doom-theme 'doom-city-lights)    ; 2
+;(setq doom-theme 'doom-1337)           ; 2
+;(setq doom-theme 'doom-moonlight)       ; 4
+;(setq doom-theme 'doom-nord)           ; 3
+;(setq doom-theme 'doom-outrun-electric) ; 4
+(setq doom-theme 'doom-snazzy)          ; 4.2
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+;; Display Line Numbers
+(setq display-line-numbers-type nil);'relative)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
+;; Org Mode default directory
 (setq org-directory "~/org/")
 
-
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
-;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
+;; `after!' block, otherwise Doom's defaults may override your settings. E.after.
 ;;
-;;   (after! PACKAGE
+;;   (g! PACKAGE
 ;;     (setq x y))
 ;;
 ;; The exceptions to this rule:
@@ -76,7 +81,6 @@
 ;; they are implemented.
 
 
-;;; START PERSONAL CONFIG
 
 ;;
 ;; Since we have a git repo in our $HOME for the dotfiles,
@@ -96,56 +100,30 @@
 )
 
 ;; TODO / FIXME
-;; our first attempt of supporting typst here
-;(add-to-list 'treesit-language-source-alist
-;             '(typst "https://github.com/uben0/tree-sitter-typst"))
-;(treesit-install-language-grammar 'typst)
-;(use-package! typst-ts-mode) ; should also do the settings and stuff
-;(setq consult-imenu-config
-;      (append consult-imenu-config
-;              '((typst-ts-mode :topLevel "Headings" :types
-;                          ((?h "Headings" typst-ts-markup-header-face)
-;                           (?f "Functions" font-lock-function-name-face))))))
 
-;; NOTE we arent even using it...
-;; Emacs Doom E05: Installing Packages with org-super-agenda as an example
-(use-package! org-super-agenda
-  :after org-agenda
-  :init
-  (setq org-super-agenda-groups '((:name "Today"
-                                        :time-grid t
-                                        :scheduled today)
-                                  (:name "Due today"
-                                         :deadline today)
-                                  (:name "Important"
-                                         :priority "A")
-                                  (:name "Overdue"
-                                         :deadline past)
-                                  (:name "Due soon"
-                                         :deadline future)
-                                  (:name "Big Outcomes"
-                                         :tag "bo")))
-  :config
-  (org-super-agenda-mode))
 
-;; NOTE
+;; Typst Support
+
+
 ;; Emacs Doom E06 - evil snipe: quick horizontal movements
-;; This functionality already exists but evil snipe will improve and
-;; also allow s for kangaroo jumps with two letters etc.
+;; s for kangaroo jumps with two letters etc.
 ;; ALREADY ENABLED...
-;; ............................
 
-;; NOTE
 ;; Emacs Doom E07 - avy: moving the screen easily
 ;; g + s + SPACE ...
 (setq avy-all-windows t)
 
-;; NOTE
-;; Emacs Doom E08
-;; evil-multiedit package - already installed
-
-;; NOTE Dired
+;; Dired
 (evil-define-key 'normal dired-mode-map
   (kbd "h") 'dired-up-directory
-  (kbd "l") 'dired-open-file
+  ;(kbd "l") 'dired-open-file
+  )
+
+;; Typst
+; Load typst-ts-mode for typst files
+(use-package! typst-ts-mode
+  :mode "\\.typ\\'")
+(after! typst-ts-mode
+  (setq typst-ts-mode-indent-offset 2)
+  ;; Add more configuration as needed
   )
