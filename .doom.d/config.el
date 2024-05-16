@@ -127,3 +127,42 @@
   (setq typst-ts-mode-indent-offset 2)
   ;; Add more configuration as needed
   )
+
+;; Vterm
+(use-package! vterm
+  :commands vterm
+  :config
+  ;; Set the default shell to the user's shell
+  ;(setq vterm-shell (getenv "SHELL"))
+  )
+(map! :leader
+      :desc "Open vterm" "o t" #'vterm)
+
+;; Nix
+(use-package! tree-sitter-langs
+  :ensure t
+  :after tree-sitter)
+;; (use-package! nix-ts-mode
+;;   :ensure t
+;;   :mode "\\.nix\\'"
+;;   :config
+;;   ;; Ensure tree-sitter uses the custom grammar path
+;;   (add-to-list 'auto-mode-alist '("\\.nix\\' . nix-ts-mode"))
+;;   )
+(use-package! nix-mode
+  :mode "\\.nix\\'"
+  :hook (nix-mode . format-all-mode)
+  :config
+  (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode))
+  (setq-hook! 'nix-mode-hook
+    indent-tabs-mode nil ; Use spaces instead of tabs
+    tab-width 2)         ; Set tab width to 2 spaces
+  )
+(use-package! reformatter
+  :config
+  (reformatter-define nixfmt
+        :program "nixfmt"
+        :args '()))
+(add-hook 'nix-mode-hook
+          (lambda ()
+            (add-hook 'before-save-hook #'nixfmt-buffer nil t)))

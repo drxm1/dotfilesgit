@@ -1,7 +1,9 @@
 { pkgs, inputs, ... }:
-
+let
+    #tree-sitter-nix = inputs.tree-sitter-nix-flake.packages.${pkgs.system}.tree-sitter-nix;
+in
 {
-  home.packages = with pkgs; [
+  home.packages = with pkgs; ([
     inputs.pyprland.packages."x86_64-linux".pyprland
     
     # [BROWSERS]
@@ -57,6 +59,9 @@
     typst vimPlugins.nvim-treesitter-parsers.typst typst-lsp typst-live
     typst-preview typstfmt prettypst typst-fmt
 
+    # [EMACS UTILS]
+    nixfmt-classic
+
     # [NVIM] utils / libraries mainly used for nvim
     # ...
 
@@ -98,5 +103,5 @@
     kdePackages.plasma-wayland-protocols
 
     # REM30 polkit-kde-agent
-  ];
+  ]);# ++ [ tree-sitter-nix ];
 }

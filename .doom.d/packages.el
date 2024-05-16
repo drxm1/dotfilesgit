@@ -56,3 +56,10 @@
 
 (package! typst-ts-mode
   :recipe (:host sourcehut :repo "meow_king/typst-ts-mode"))
+
+(package! nix-ts-mode)
+(package! nix-mode)
+(package! format-all)
+(package! reformatter)
+
+(package! tree-sitter-langs)
