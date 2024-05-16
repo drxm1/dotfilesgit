@@ -40,4 +40,9 @@ in {
     pinentryPackage = pkgs.pinentry-qt;
   };
 
+  # Direnv and Lorri
+  # TODO: enable direnv as well...
+  # run 'lorri init' in the project roots
+  services.lorri.enable = true;
+
 }

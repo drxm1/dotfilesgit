@@ -62,4 +62,6 @@
 (package! format-all)
 (package! reformatter)
 
+(package! direnv)
+
 (package! tree-sitter-langs)

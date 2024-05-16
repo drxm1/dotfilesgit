@@ -4,6 +4,8 @@ let
 in
 {
   home.packages = with pkgs; ([
+    direnv
+
     inputs.pyprland.packages."x86_64-linux".pyprland
     
     # [BROWSERS]
@@ -53,7 +55,8 @@ in
 
     # [TOOLS]
     chezmoi
-    hplip		# Print, scan and fax HP drivers for Linux
+    # Print, scan and fax HP drivers for Linux
+    hplip
 
     # [TYPST]
     typst vimPlugins.nvim-treesitter-parsers.typst typst-lsp typst-live
@@ -61,6 +64,10 @@ in
 
     # [EMACS UTILS]
     nixfmt-classic
+
+    # [PYTHON UTILS AND FORMATTERS]
+    black python312Packages.cython python312Packages.pyflakes isort python312Packages.pytest python311Packages.nose python312Packages.pyls-isort
+    python312Packages.python-lsp-server python312Packages.python-lsp-black python312Packages.pylsp-mypy
 
     # [NVIM] utils / libraries mainly used for nvim
     # ...

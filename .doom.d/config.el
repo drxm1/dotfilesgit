@@ -34,12 +34,12 @@
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
 ;; Doom Theme
-;(setq doom-theme 'doom-one)            ; 2
-;(setq doom-theme 'doom-city-lights)    ; 2
-;(setq doom-theme 'doom-1337)           ; 2
-;(setq doom-theme 'doom-moonlight)       ; 4
-;(setq doom-theme 'doom-nord)           ; 3
-;(setq doom-theme 'doom-outrun-electric) ; 4
+                                        ;(setq doom-theme 'doom-one)            ; 2
+                                        ;(setq doom-theme 'doom-city-lights)    ; 2
+                                        ;(setq doom-theme 'doom-1337)           ; 2
+                                        ;(setq doom-theme 'doom-moonlight)       ; 4
+                                        ;(setq doom-theme 'doom-nord)           ; 3
+                                        ;(setq doom-theme 'doom-outrun-electric) ; 4
 (setq doom-theme 'doom-snazzy)          ; 4.2
 
 ;; Display Line Numbers
@@ -86,18 +86,18 @@
 ;; Since we have a git repo in our $HOME for the dotfiles,
 ;; we probably need these tweaks:
 (setq projectile-project-search-path
-'("~/.config/hypr/" "~/.config/ags/" "~/.config/nvim/"
-"~/dev" "~/.doom.d/"))
+      '("~/.config/hypr/" "~/.config/ags/" "~/.config/nvim/"
+        "~/dev" "~/.doom.d/"))
 (after! projectile
-;(add-to-list 'projectile-project-root-files-bottom-up ".git")
-;(add-to-list 'projectile-project-root-files-bottom-up ".gitignore")
-(setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up))
-;(setq projectile-project-root-files-bottom-up (remove ".gitignore" projectile-project-root-files-bottom-up))
-;(add-to-list 'projectile-ignored-projects "~/")
-;(setq projectile-ignored-project-function
-;     (lambda (project-root)
-;        (equal project-root (expand-file-name "~/"))))
-)
+                                        ;(add-to-list 'projectile-project-root-files-bottom-up ".git")
+                                        ;(add-to-list 'projectile-project-root-files-bottom-up ".gitignore")
+  (setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up))
+                                        ;(setq projectile-project-root-files-bottom-up (remove ".gitignore" projectile-project-root-files-bottom-up))
+                                        ;(add-to-list 'projectile-ignored-projects "~/")
+                                        ;(setq projectile-ignored-project-function
+                                        ;     (lambda (project-root)
+                                        ;        (equal project-root (expand-file-name "~/"))))
+  )
 
 ;; TODO / FIXME
 
@@ -116,11 +116,16 @@
 ;; Dired
 (evil-define-key 'normal dired-mode-map
   (kbd "h") 'dired-up-directory
-  ;(kbd "l") 'dired-open-file
+                                        ;(kbd "l") 'dired-open-file
   )
 
+;; Enable IO logging for lsp
+(use-package! lsp-mode
+  :config
+  (setq lsp-log-io t))
+
 ;; Typst
-; Load typst-ts-mode for typst files
+                                        ; Load typst-ts-mode for typst files
 (use-package! typst-ts-mode
   :mode "\\.typ\\'")
 (after! typst-ts-mode
@@ -133,12 +138,12 @@
   :commands vterm
   :config
   ;; Set the default shell to the user's shell
-  ;(setq vterm-shell (getenv "SHELL"))
+                                        ;(setq vterm-shell (getenv "SHELL"))
   )
 (map! :leader
       :desc "Open vterm" "o t" #'vterm)
 
-;; Nix
+;; Nix language support
 (use-package! tree-sitter-langs
   :ensure t
   :after tree-sitter)
@@ -161,8 +166,17 @@
 (use-package! reformatter
   :config
   (reformatter-define nixfmt
-        :program "nixfmt"
-        :args '()))
+    :program "nixfmt"
+    :args '()))
 (add-hook 'nix-mode-hook
           (lambda ()
             (add-hook 'before-save-hook #'nixfmt-buffer nil t)))
+
+;; Direnv auto switch shell (used alongside lorri: 'lorri init' for new project)
+;; TODO: currently does not work alongside with the python lsp...
+(use-package! direnv
+  :config
+  (direnv-mode)
+  ;; Add a hook to reload LSP after direnv is done
+  (add-hook 'direnv-env-changed-hook #'lsp-restart-workspace)
+  )

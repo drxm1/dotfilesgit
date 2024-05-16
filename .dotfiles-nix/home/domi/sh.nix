@@ -19,16 +19,21 @@ in
   programs.bash = {
     enable = true;
     shellAliases = domi_shell_aliases;
+    enableCompletion = true;
     sessionVariables =
       {
         EDITOR = "nvim";
         VISUAL = "nvim";
       };
+    initExtra = ''
+      eval "$(direnv hook bash)"
+    '';
   };
   ### ### ###
 
   ### ZSH ###
-  home.file.".zshrc".source = ./dotconfig/.zshrc; 
+  # REMOVED: home.file.".zshrc".source = ./dotconfig/.zshrc;
+  # If using zsh again make sure to add eval "$(direnv hook zsh)" to zshrc!!!
   ### ### ###
 
 }
