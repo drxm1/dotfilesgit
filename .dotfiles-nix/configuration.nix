@@ -24,10 +24,6 @@
   services.flatpak.enable = true; # for scrivano application download needed
   services.upower.enable = true; # for ags needed
   services.udisks2.enable = true;
-  # REM30 services.emacs = {
-  # REM30  enable = true;
-  # REM30 package = pkgs.emacs;
-  # REM30 };
   systemd.user.services.udiskie = {
     description = "Automount service using udiskie for user devices";
     after = [ "graphical-session-pre.target" ];
@@ -61,7 +57,7 @@
     description = "domi";
     extraGroups = [ "networkmanager" "wheel" "video" "input" ];
     packages = with pkgs; [ ];
-    shell = pkgs.bash;
+    shell = pkgs.zsh; # pkgs.bash;
   };
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
@@ -74,8 +70,8 @@
 
   # Shells
   environment.shells = with pkgs; [ bash zsh ];
-  #users.defaultUserShell = pkgs.zsh;
-  users.defaultUserShell = pkgs.bash;
+  users.defaultUserShell = pkgs.zsh;
+  #users.defaultUserShell = pkgs.bash;
   programs.zsh.enable = true;
   environment.variables.EDITOR = "nvim";
   fileSystems."/" = {
@@ -251,8 +247,6 @@
 
   # npm
   programs.npm.enable = true;
-
-
 
   # Hyprland
   programs.hyprland.enable = true;

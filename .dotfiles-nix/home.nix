@@ -41,8 +41,8 @@ in {
   };
 
   # Direnv and Lorri
-  # TODO: enable direnv as well...
   # run 'lorri init' in the project roots
+  # don't forget to also add a .projectile file and projectile-discover
   services.lorri.enable = true;
 
 }

@@ -21,6 +21,7 @@ Documents/
 Downloads/
 OneDrive/
 dev/
+.python_history
 
 ### Unneeded configuration directories in .config
 .config/discord/
@@ -139,6 +140,4 @@ Pictures/
 .viminfo
 .zcompdump
 .zsh_history
-.zshrc
 .config/gtk-2.0/
-

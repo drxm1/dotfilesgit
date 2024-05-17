@@ -137,8 +137,8 @@
 (use-package! vterm
   :commands vterm
   :config
-  ;; Set the default shell to the user's shell
-                                        ;(setq vterm-shell (getenv "SHELL"))
+  ;; Set the default shell to the user's shell;
+  (setq vterm-shell "/run/current-system/sw/bin/zsh");(getenv "SHELL"))
   )
 (map! :leader
       :desc "Open vterm" "o t" #'vterm)
@@ -173,7 +173,6 @@
             (add-hook 'before-save-hook #'nixfmt-buffer nil t)))
 
 ;; Direnv auto switch shell (used alongside lorri: 'lorri init' for new project)
-;; TODO: currently does not work alongside with the python lsp...
 (use-package! direnv
   :config
   (direnv-mode)
