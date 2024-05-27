@@ -106,4 +106,8 @@ dotfilesgit checkout
 cd $HOME/.dotfiles-nix && sudo-nixos-rebuild switch --flake .
 cd $HOME/.dotfiles-nix && home-manager switch --flake .
 ```
+<<<<<<< HEAD
 >>>>>>> fe7437a (Update README.md)
+=======
+TODO: Instructions to replicate or copy SSH keys and secret stuff.
+>>>>>>> 72aefaa (Update README.md)
