@@ -12,6 +12,7 @@ sudo vim /etc/nixos/configuration.nix
 2. clone the necessary files (some dotfiles as well as the nixos flakes)
 TODO: Instructions to replicate or copy SSH keys and secret stuff.
 ```
+nix-shell -p git
 git clone --bare https://github.com/dominikrosser/dotfilesgit.git $HOME/.dotfiles.git
 echo "alias dotfilesgit='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'" >> $HOME/.bashrc
 source $HOME/.bashrc
