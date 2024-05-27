@@ -1,6 +1,7 @@
 # dotfiles-nix
 
 ## Installation
+<<<<<<< HEAD
 Install it as follows on a fresh NixOS installation.
 
 ### 1. Temporarily enable `git` and `vim`, and ensure flake support:
@@ -94,3 +95,15 @@ cargo install --git https://github.com/nvarner/typst-lsp typst-lsp
 ```
 warning: be sure to add `/home/domi/.cargo/bin` to your PATH to be able to run the installed binaries
 `
+=======
+Install it as follows on a fresh nixos installation.
+```
+nix-shell -p git
+git clone --bare https://github.com/dominikrosser/dotfilesgit.git $HOME/.dotfiles.git
+echo "alias dotfilesgit='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'" >> $HOME/.bashrc
+source $HOME/.bashrc
+dotfilesgit checkout
+cd $HOME/.dotfiles-nix && sudo-nixos-rebuild switch --flake .
+cd $HOME/.dotfiles-nix && home-manager switch --flake .
+```
+>>>>>>> fe7437a (Update README.md)
