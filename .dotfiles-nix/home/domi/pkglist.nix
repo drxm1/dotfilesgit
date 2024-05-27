@@ -21,6 +21,9 @@ in {
     # [GIT UTILS]
     meld
 
+    # [ISO CREATION UTILS]
+    ventoy-full
+
     # [MEDIA] video, audio, pictures, pdf, ...
     vlc
     kdePackages.okular

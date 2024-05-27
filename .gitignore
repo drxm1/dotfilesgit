@@ -105,7 +105,8 @@ dev/
 .config/zoomus.conf
 
 ###### CHECK ######
-Pictures/
+Pictures/smplayer_screenshots/
+Pictures/Screenshots/
 .gitconfig
 .anacrontab
 .bash_profile
