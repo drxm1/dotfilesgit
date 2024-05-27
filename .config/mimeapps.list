@@ -11,7 +11,7 @@ application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
 image/jpeg=vimiv.desktop
 application/pdf=okularApplication_pdf.desktop
-video/mp4=firefox.desktop
+video/mp4=vlc.desktop
 image/png=vimiv.desktop
 
 [Added Associations]

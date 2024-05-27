@@ -180,7 +180,6 @@ in {
     # REM30 xdg-desktop-portal-hyprland
     # REM30 libsForQt5.xdg-desktop-portal-kde
 
-    #zoom-us issues not free TODO
     # asztal
     bun
     # TODO: zathura-pdf-poppler
