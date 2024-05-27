@@ -11,4 +11,5 @@ dotfilesgit checkout
 cd $HOME/.dotfiles-nix && sudo-nixos-rebuild switch --flake .
 cd $HOME/.dotfiles-nix && home-manager switch --flake .
 ```
+TODO: If one of the SHA256 keys for the programs downloaded from github does not match here, change it temporarily. I don't know why this happens.
 TODO: Instructions to replicate or copy SSH keys and secret stuff.
