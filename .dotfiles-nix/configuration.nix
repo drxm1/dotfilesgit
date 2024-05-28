@@ -234,7 +234,13 @@
   # List services that you want to enable:
   services.thermald.enable = true;
   services.auto-cpufreq.enable = true;
+
   services.printing.enable = true;
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   environment.etc."vimrc".text = ''
     " get rid of maddening mouseclick-moves-cursor behavior
