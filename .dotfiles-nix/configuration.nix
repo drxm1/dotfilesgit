@@ -61,11 +61,12 @@
   };
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
+    (import (fetchTarball {
       url =
         "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-      sha256 = "1av6dizflshy01xfqyfl3zw7w9a5z2xly7m9i9qgc8pcxmikhxhc";
-    }))
+      sha256 = "0by25pxvh56allf62qp82wyycmw46s9rwfiip3a71b937gx9zywz";
+    }
+    ))
   ];
 
   # Shells
