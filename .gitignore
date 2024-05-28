@@ -23,6 +23,9 @@ OneDrive/
 dev/
 .python_history
 
+### every new device has its own hardware-configuration.nix copied from /etc/nixos/hardware-configuration.nix
+.dotfiles-nix/hardware-configuration.nix
+
 ### Unneeded configuration directories in .config
 .config/discord/
 .config/eww.bak/

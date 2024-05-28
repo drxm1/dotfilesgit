@@ -9,6 +9,7 @@ nix-shell -p vim
 sudo vim /etc/nixos/configuration.nix
 # Add the line: nix.settings.experimental-features = [ "nix-command" "flakes" ];
 ```
+
 2. clone the necessary files (some dotfiles as well as the nixos flakes)
 TODO: Instructions to replicate or copy SSH keys and secret stuff.
 ```
@@ -18,7 +19,13 @@ echo "alias dotfilesgit='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'" 
 source $HOME/.bashrc
 dotfilesgit checkout
 ```
-3. Activate the system
+
+3. Copy your hardware-configuration.nix:
+``` sh
+cp /etc/nixos/hardware-configuration.nix $HOME/.dotfiles-nix/hardware-configuration.nix
+```
+
+4. Activate the system
 TODO: If one of the SHA256 keys for the programs downloaded from github does not match here, change it temporarily. I don't know why this happens.
 ```
 cd $HOME/.dotfiles-nix && sudo-nixos-rebuild switch --flake .
