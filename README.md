@@ -25,9 +25,10 @@ nix-channel --update && nix-shell '<home-manager>' -A install
 4. Activate the system
 ``` sh
 cd $HOME/.dotfiles-nix && sudo-nixos-rebuild switch --flake .
-cd $HOME/.dotfiles-nix && home-manager switch --flake .
+cd $HOME/.dotfiles-nix && home-manager switch -b backup --flake .
 reboot
 ```
 - TODO: If one of the SHA256 keys for the programs downloaded from github does not match here, change it temporarily. I don't know why this happens.
 - TODO: Instructions to replicate or copy SSH keys and secret stuff.
 - TODO: The _nixos-hardware_ stuff is still only for the laptop, make it modular so each device can install it's own drivers.
+- TODO: The doom-emacs installation is not fully automatic yet, either include the few commands needed to install or add automations to the nix config.
