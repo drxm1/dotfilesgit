@@ -52,7 +52,17 @@ cat .dotfiles-nix/.secrets/test.txt
 ```
 which should now display something reasonable which is not encrypted, then something encrypted.
 
+If the repo does not work anymore then just reset everything like this (does not matter since we are on a fresh install anyways, and the SSH setup is working now):
+``` sh
+rm -rf $HOME/.dotfiles.git
+git clone --bare git@github.com:dominikrosser/dotfilesgit.git $HOME/.dotfiles.git
+dotfilesgit checkout --force
+dotfilesgit crypt unlock ~/.domi_keys/gitcrypt/private.gpg
+```
+
 - TODO: If one of the SHA256 keys for the programs downloaded from github does not match here, change it temporarily. I don't know why this happens.
 - TODO: Instructions to replicate or copy SSH keys and secret stuff.
 - TODO: The _nixos-hardware_ stuff is still only for the laptop, make it modular so each device can install it's own drivers.
 - TODO: The doom-emacs installation is not fully automatic yet, either include the few commands needed to install or add automations to the nix config.
+
+THIS IS A TEST
