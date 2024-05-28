@@ -62,12 +62,18 @@ dotfilesgit remote rename origin github
 ```
 
 6. Test if the old SHA256 keys for each flake is still working:
-
 ``` sh
 cd $HOME/.dotfiles-nix && sudo nixos-rebuild test --flake .
 ```
+If not maybe do some cleanup and try again.
 
-`
+7. Install doom emacs (config already in .doom.d but we need to install doom)
+``` sh
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
+~/.config/emacs/bin/doom upgrade
+~/.config/emacs/bin/doom sync
+```
 
 - TODO: If one of the SHA256 keys for the programs downloaded from github does not match here, change it temporarily. I don't know why this happens.
 - TODO: Instructions to replicate or copy SSH keys and secret stuff.

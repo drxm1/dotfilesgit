@@ -85,7 +85,8 @@ dev/
 # All the other hyprland configuration files are kept under version control,
 # but the main hyprland.conf that just imports these is managed by home-manager!
 .config/hypr/hyprland.conf
-
+# Emacs local stuff either symlinked or managed by doom:
+.config/emacs
 # Encryption related stuff NEVER on source control
 .domi_keys/
 .git-crypt/
