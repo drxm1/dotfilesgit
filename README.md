@@ -30,3 +30,4 @@ reboot
 ```
 - TODO: If one of the SHA256 keys for the programs downloaded from github does not match here, change it temporarily. I don't know why this happens.
 - TODO: Instructions to replicate or copy SSH keys and secret stuff.
+- TODO: The _nixos-hardware_ stuff is still only for the laptop, make it modular so each device can install it's own drivers.
