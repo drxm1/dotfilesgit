@@ -28,6 +28,30 @@ cd $HOME/.dotfiles-nix && sudo-nixos-rebuild switch --flake .
 cd $HOME/.dotfiles-nix && home-manager switch -b backup --flake .
 reboot
 ```
+
+
+5. copy SSH keys and git-crypt keys from old machine (same wifi connection):
+``` sh
+scp -r ~/.domi_keys domi@<NEW_MACHINE_IP>:$HOME/
+```
+Test the connection:
+``` sh
+ssh -T git@github.com
+```
+Iff the connection failed you may need to manually add the ssh keys, for example like this:
+``` sh
+eval "$(ssh-agent -s)"
+ssh-add ~/.domi_keys/github_ssh/id_ed25519
+```
+Test the git-crypt mechanism:
+``` sh
+dotfilesgit crypt unlock $HOME/.domi_keys/gitcrypt/private.gpg
+cat .dotfiles-nix/.secrets/test.txt
+dotfilesgit crypt lock
+cat .dotfiles-nix/.secrets/test.txt
+```
+which should now display something reasonable which is not encrypted, then something encrypted.
+
 - TODO: If one of the SHA256 keys for the programs downloaded from github does not match here, change it temporarily. I don't know why this happens.
 - TODO: Instructions to replicate or copy SSH keys and secret stuff.
 - TODO: The _nixos-hardware_ stuff is still only for the laptop, make it modular so each device can install it's own drivers.
