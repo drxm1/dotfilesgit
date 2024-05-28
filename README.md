@@ -52,13 +52,22 @@ cat .dotfiles-nix/.secrets/test.txt
 ```
 which should now display something reasonable which is not encrypted, then something encrypted.
 
-If the repo does not work anymore then just reset everything like this (does not matter since we are on a fresh install anyways, and the SSH setup is working now):
+If the repo does not work anymore, or anyways since we want ssh, just reset everything like this (does not matter since we are on a fresh nixos installation, and the SSH setup is working now):
 ``` sh
 rm -rf $HOME/.dotfiles.git
 git clone --bare git@github.com:dominikrosser/dotfilesgit.git $HOME/.dotfiles.git
 dotfilesgit checkout --force
 dotfilesgit crypt unlock ~/.domi_keys/gitcrypt/private.gpg
+dotfilesgit remote rename origin github
 ```
+
+6. Test if the old SHA256 keys for each flake is still working:
+
+``` sh
+cd $HOME/.dotfiles-nix && sudo nixos-rebuild test --flake .
+```
+
+`
 
 - TODO: If one of the SHA256 keys for the programs downloaded from github does not match here, change it temporarily. I don't know why this happens.
 - TODO: Instructions to replicate or copy SSH keys and secret stuff.
