@@ -65,9 +65,19 @@
       url =
         "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
       sha256 = "0by25pxvh56allf62qp82wyycmw46s9rwfiip3a71b937gx9zywz";
-    }
-    ))
+    }))
   ];
+
+  # Storage Optimization
+  nix.optimize.automatic = true;
+  nix.settings.auto-optimize-store = true; # might slow down builds
+  nix.gc.automatic = true;
+  nix.gc.dates = "weekly";
+  nix.gc.options = "--delete-older-than 7d";
+  nix.extraOptions = ''
+    min-free = ${toString (100 * 1024 * 1024)}
+    max-free = ${toString (1024 * 1024 * 1024)}
+  ''; # Free up 1GiB whenever there is less than 100MiB left
 
   # Shells
   environment.shells = with pkgs; [ bash zsh ];
