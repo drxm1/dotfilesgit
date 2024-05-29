@@ -17,14 +17,21 @@ source $HOME/.bashrc && dotfilesgit checkout
 
 3. copy your _hardware-configuration.nix_ and bootstrap the first home-manager generation:
 ``` sh
-cp /etc/nixos/hardware-configuration.nix $HOME/.dotfiles-nix/hardware-configuration.nix
+mkdir $HOME/.dotfiles-nix/hosts/<NEW-MACHINE>
+cp /etc/nixos/hardware-configuration.nix $HOME/.dotfiles-nix/hosts/<NEW-MACHINE>/hardware-configuration.nix
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update && nix-shell '<home-manager>' -A install
 ```
 
-4. Activate the system
+4. Add a new configuration.nix file to specify custom behaviour of your machine, see for example `$HOME/.dotfiles-nix/hosts/pc-ksteg/configuration.nix`, or just copy that file for now:
 ``` sh
-cd $HOME/.dotfiles-nix && sudo-nixos-rebuild switch --flake .
+cp $HOME/.dotfiles-nix/hosts/pc-ksteg/configuration.nix $HOME/.dotfiles-nix/hosts/<NEW-MACHINE>/configuration.nix
+```
+Then update `flake.nix` (create a new _nixosConfiguration_).
+
+4. Activate the system (must use your configuration name or it will fail, due to the current way we import hardware-configuration.nix).
+``` sh
+cd $HOME/.dotfiles-nix && sudo-nixos-rebuild switch --flake .#<YOUR-NIXOS-CONFIGURATION-NAME>
 cd $HOME/.dotfiles-nix && home-manager switch -b backup --flake .
 reboot
 ```
@@ -32,7 +39,7 @@ reboot
 
 5. copy SSH keys and git-crypt keys from old machine (same wifi connection):
 ``` sh
-scp -r ~/.domi_keys domi@<NEW_MACHINE_IP>:$HOME/
+scp -r ~/.domi_keys domi@<NEW_MACHINE_IP>:~/
 ```
 Test the connection:
 ``` sh
@@ -63,7 +70,7 @@ dotfilesgit remote rename origin github
 
 6. Test if the old SHA256 keys for each flake is still working:
 ``` sh
-cd $HOME/.dotfiles-nix && sudo nixos-rebuild test --flake .
+cd $HOME/.dotfiles-nix && sudo nixos-rebuild test --flake .#<YOUR-NIXOS-CONFIGURATION-NAME>
 ```
 If not maybe do some cleanup and try again.
 
