@@ -69,14 +69,12 @@ If not maybe do some cleanup and try again.
 
 7. Install doom emacs (config already in .doom.d but we need to install doom)
 ``` sh
-git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-~/.config/emacs/bin/doom install
-~/.config/emacs/bin/doom upgrade
-~/.config/emacs/bin/doom sync
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+~/.emacs.d/bin/doom upgrade
+~/.emacs.d/bin/doom sync
 ```
 
-- TODO: If one of the SHA256 keys for the programs downloaded from github does not match here, change it temporarily. I don't know why this happens.
-- TODO: Instructions to replicate or copy SSH keys and secret stuff.
 - TODO: The _nixos-hardware_ stuff is still only for the laptop, make it modular so each device can install it's own drivers.
 - TODO: The doom-emacs installation is not fully automatic yet, either include the few commands needed to install or add automations to the nix config.
 
