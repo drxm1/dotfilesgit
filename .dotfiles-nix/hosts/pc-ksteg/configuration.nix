@@ -69,8 +69,8 @@
   ];
 
   # Storage Optimization
-  nix.optimise.automatic = true;
-  nix.settings.auto-optimise-store = true; # might slow down builds
+  nix.optimize.automatic = true;
+  nix.settings.auto-optimize-store = true; # might slow down builds
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
   nix.gc.options = "--delete-older-than 7d";
