@@ -10,15 +10,14 @@
   console.keyMap = "sg";
 
   imports = [
-    ./hardware-configuration.nix # never remove this
-    ./hardware/nvidia.nix
-    ./system/nvidia.nix
-    ./system/steam.nix
-    ./system/onedrive.nix
-    ./system/opencl_compute.nix
-    ./system/bootloader.nix
-    ./system/bluetooth_and_sound.nix
-    ./system/themes/sddm-theme.nix
+    ../hardware/nvidia.nix
+    ../system/nvidia.nix
+    ../system/steam.nix
+    ../system/onedrive.nix
+    ../system/opencl_compute.nix
+    ../system/bootloader.nix
+    ../system/bluetooth_and_sound.nix
+    ../system/themes/sddm-theme.nix
   ];
 
   services.flatpak.enable = true; # for scrivano application download needed

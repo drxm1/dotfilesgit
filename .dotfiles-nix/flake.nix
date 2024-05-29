@@ -1,23 +1,27 @@
 {
-  description = "My first flake!";
+  description = ".dotfiles-nix flake: Describes the whole linux system.";
 
+  ### INPUTS ###################################################################################
   inputs = {
+    # Nix packages
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Nix hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    # Nix home manager
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Tree-sitter
     tree-sitter-nix-flake.url = "github:nix-community/tree-sitter-nix";
 
-    #anyrun.url = "github:Kirottu/anyrun";
-    #anyrun.inputs.nixpkgs.follows = "nixpkgs";
-
+    # Ags
     ags.url = "github:Aylur/ags";
 
+    # Hyprland
     hyprland.url =
-      "git+https://github.com/hyprwm/Hyprland?submodules=1"; # "github:hyprwm/Hyprland";
+      "git+https://github.com/hyprwm/Hyprland?submodules=1"; # prev: "github:hyprwm/Hyprland";
     hyprgrass = {
       url = "github:horriblename/hyprgrass";
       inputs.hyprland.follows = "hyprland"; # IMPORTANT
@@ -29,30 +33,41 @@
     pyprland = { url = "github:hyprland-community/pyprland"; };
 
   };
+  ##############################################################################################
 
-  outputs =
-    # TODO: what does this @inputs notation do?
-    { self, nixpkgs, nixos-hardware, home-manager, ags, hyprgrass, hyprland
-    , tree-sitter-nix-flake, ... }@inputs:
+  ### OUTPUTS ##################################################################################
+  outputs = { self, nixpkgs, nixos-hardware, home-manager, ags, hyprgrass
+    , hyprland, tree-sitter-nix-flake, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      #tree-sitter-nix = tree-sitter-nix-flake.packages.${system}.tree-sitter-nix;
     in {
+      ## NIX CONFIGURATIONS
       nixosConfigurations = {
-        nixos = lib.nixosSystem {
+        ###### Surface Laptop Studio 2 ######
+        laptop = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
           modules = [
             nixos-hardware.nixosModules.microsoft-surface-common
             #./hardware/surface-laptop-studio
             #hyprland.homeManagerModules.default
-            ./configuration.nix
+            ./hosts/surface-laptop-studio-2/configuration.nix
           ];
         };
+        #####################################
+
+        ########### PC Ksteg ################
+        pc = lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/pc-ksteg/configuration.nix ];
+        };
+        #####################################
       };
 
+      ## HOME CONFIGURATIONS
       homeConfigurations = {
         domi = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -61,27 +76,7 @@
         };
       };
 
-      # Domi: "NO CLUE WHAT THIS DOES: I ALSO DONT KNOW IF NEEDED OR NOT..."
-      # devShells.${system}.default = pkgs.mkShell {
-      #	buildInputs = with pkgs;
-      #		[
-      #			cmake
-      #			gdb
-      #			qt6.qtbase
-      #			qt6.full
-      #			qtcreator
-      #			qt6.wrapQtAppsHook
-      #			makeWrapper
-      #			bashInteractive
-      #		];
-      #	shellHook = ''
-      #		export QT_QPA_PLATFORM=wayland
-      #		bashdir=$(mktemp -d)
-      #		makeWrapper "$(type -p bash" "$bashdir/bash" "''${qtWrapperArgs[@]}"
-      #		exec "$bashdir/bash"
-      #	'';
-      #};
-
+      # TODO: set env var somewhere...: export QT_QPA_PLATFORM=wayland
     };
-
+  ##############################################################################################
 }
