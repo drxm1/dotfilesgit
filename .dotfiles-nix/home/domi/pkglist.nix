@@ -21,6 +21,11 @@ in {
     # [GIT UTILS]
     meld
 
+    # [SCREENSHOT AND IMAGE UTILS]
+    grim
+    slurp
+    imagemagick
+
     # [ISO CREATION UTILS]
     ventoy-full
 
