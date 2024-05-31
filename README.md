@@ -37,6 +37,7 @@ cd $HOME/.dotfiles-nix && sudo nixos-rebuild switch --flake .#<YOUR-NIXOS-CONFIG
 cd $HOME/.dotfiles-nix && home-manager switch -b backup --flake .
 reboot
 ```
+On the first boot, sometimes SDDM does not load, in which case you can press `Alt+F1` to log in via shell, and get into the WM by executing `Hyprland` from there.
 
 ### 6. Copy SSH keys and git-crypt keys from the old machine:
 Ensure you are on the same Wi-Fi connection.
