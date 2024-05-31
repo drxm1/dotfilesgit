@@ -129,6 +129,9 @@ in {
     prettypst
     typst-fmt
 
+    # [Quarto]
+    quarto
+
     # [EMACS UTILS]
     nixfmt-classic
 
