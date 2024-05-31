@@ -49,8 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-;;; DOMI DOMI DOMI
-;;;
 (package! doom-themes) ; NOTE nice custom themes, maybe already included in doom emacs
 (package! org-super-agenda) ; NOTE we arent even really using org-super agenda right now...
 
@@ -65,3 +63,5 @@
 (package! direnv)
 
 (package! tree-sitter-langs)
+
+(package! quarto-mode)
