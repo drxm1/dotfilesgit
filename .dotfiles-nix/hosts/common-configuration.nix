@@ -20,6 +20,11 @@
     ../system/themes/sddm-theme.nix
   ];
 
+  programs.gamescope.enable = true;
+
+  services.syncthing.enable = true;
+  services.syncthing.user = "domi";
+
   services.flatpak.enable = true; # for scrivano application download needed
   services.upower.enable = true; # for ags needed
   services.udisks2.enable = true;
@@ -36,17 +41,9 @@
   networking.networkmanager.enable = true;
   services.xserver = {
     xkb.layout = "ch";
-    xkb.variant = "";
+    #TODO xkb.variant = "nodeadkeys";
   };
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-gnome
-      ## do not add this: pkgs.xdg-desktop-portal-hyprland  (it is already included)
-    ];
-    wlr.enable = true; # screen sharing
-  };
+
   systemd.user.services.xdg-desktop-portal-hyprland = {
     wantedBy = [ "xdg-desktop-portal.service" ];
     before = [ "xdg-desktop-portal.service" ];
@@ -63,7 +60,7 @@
     (import (fetchTarball {
       url =
         "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-      sha256 = "0by25pxvh56allf62qp82wyycmw46s9rwfiip3a71b937gx9zywz";
+      sha256 = "0wcl3d8waf59p8ar9jqdgvx32aqg8291k7c7xxafdlx7zp99wfia";
     }))
   ];
 
@@ -103,6 +100,7 @@
     wget
     os-prober
     gh
+    ispell
     udiskie
     udisks2
     arch-install-scripts

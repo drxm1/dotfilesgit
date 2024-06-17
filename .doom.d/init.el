@@ -82,15 +82,15 @@
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       (spell +flyspell)   ; tasing you for misspelling mispelling
-       grammar             ; tasing grammar mistake every you make
+       ;;(spell +flyspell)   ; tasing you for misspelling mispelling
+       ;;grammar             ; tasing grammar mistake every you make
 
        :tools
        ;;ansible
        ;;biblio            ; Writes a PhD for you (citation needed)
        ;;collab            ; buffers with friends
        ;;debugger          ; FIXME stepping through code, to help you add bugs
-       direnv
+       ;;;;;;;;direnv
        ;;docker
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
@@ -119,7 +119,7 @@
        ;;(cc +lsp)         ; C > C++ == 1
        ;;clojure           ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
-       ;;coq               ; proofs-as-programs
+       coq                 ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
        ;;csharp            ; unity, .NET, and mono shenanigans
        ;;data              ; config/data formats
@@ -154,7 +154,7 @@
        ;;nim               ; python + lisp at the speed of c
        nix                 ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       org                 ; organize your plain life in plain text
+       org (+roam2)        ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional

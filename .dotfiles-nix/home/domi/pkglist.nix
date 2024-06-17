@@ -1,10 +1,29 @@
 { pkgs, inputs, ... }:
 let
   #tree-sitter-nix = inputs.tree-sitter-nix-flake.packages.${pkgs.system}.tree-sitter-nix;
+
+  # Latex, compiled so it works with emacs orgmode:
+  tex = (pkgs.texlive.combine {
+    inherit (pkgs.texlive)
+      scheme-basic dvisvgm dvipng # for preview and export as html
+      wrapfig amsmath ulem hyperref capt-of;
+    #(setq org-latex-compiler "lualatex")
+    #(setq org-preview-latex-default-process 'dvisvgm)
+  });
 in {
   home.packages = with pkgs; ([
     direnv
 
+    # [LATEX (tex-live)]
+    tex
+
+    # [syncthing: for synchronizing files with the phone]
+    syncthing
+
+    # [For displaying graph of org-roam]
+    graphviz
+
+    # [Pyprland]
     inputs.pyprland.packages."x86_64-linux".pyprland
 
     # [BROWSERS]
@@ -131,6 +150,10 @@ in {
 
     # [Quarto]
     quarto
+
+    # [Additional steam utils]
+    steam-tui
+    steamcmd
 
     # [EMACS UTILS]
     nixfmt-classic

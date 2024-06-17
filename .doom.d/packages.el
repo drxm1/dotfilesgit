@@ -64,4 +64,13 @@
 
 (package! tree-sitter-langs)
 
+;; Quarto
 (package! quarto-mode)
+(package! polymode)
+(package! poly-markdown)
+(package! request)
+
+;; Org-roam
+(unpin! org-roam)
+(package! org-roam-ui)
+(package! org-roam)

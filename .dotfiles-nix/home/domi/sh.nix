@@ -30,7 +30,6 @@ in {
 
   ### ZSH ###
   # Managing zsh not with nix.
-  # If using zsh again make sure to add eval "$(direnv hook zsh)" to zshrc!!!
   # We are currently managing it directly in the right place
   ### ### ###
 

@@ -20,6 +20,7 @@ test.scrvn
 Documents/
 Downloads/
 OneDrive/
+KameraRedmiNote/
 dev/
 .python_history
 
@@ -28,6 +29,15 @@ dev/
 
 ### Unneeded configuration directories in .config
 .config/discord/
+.config/evolution/
+.config/gsd-keyboard.settings-ported
+.config/gnome-initial-setup-done
+.config/user-dirs.dirs
+.config/user-dirs.locale
+.config/.gsd-keyboard.settings-ported
+.config/fcitx/
+.config/fcitx5/
+.config/ibus/
 .config/eww.bak/
 .config/chezmoi/
 .config/kde.org/

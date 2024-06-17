@@ -6,4 +6,21 @@
 
 {
   imports = [ ./hardware-configuration.nix ../common-configuration.nix ];
+
+  ##### NOTE: From common-configuration.nix #####
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      ## already included in gnome ... pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-gnome
+      ## do not add this: pkgs.xdg-desktop-portal-hyprland  (it is already included)
+    ];
+    wlr.enable = true; # screen sharing
+  };
+  ############## but changed ... ################
+
+  # NOTE gamescope -e -- %command%
+  # TODO this should be either gnome or hyprland not both...
+  # services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 }

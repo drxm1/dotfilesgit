@@ -118,6 +118,9 @@
   (kbd "h") 'dired-up-directory
                                         ;(kbd "l") 'dired-open-file
   )
+(after! dired
+  (map! :map dired-mode-map
+        :n "b" #'browse-url-of-dired-file))
 
 ;; Enable IO logging for lsp
 (use-package! lsp-mode
@@ -179,3 +182,62 @@
   ;; Add a hook to reload LSP after direnv is done
   (add-hook 'direnv-env-changed-hook #'lsp-restart-workspace)
   )
+
+;; Quarto
+(use-package! quarto-mode)
+(use-package! polymode)
+(use-package! poly-markdown)
+(use-package! request)
+;;; NOTE:
+                                        ; if the pull request is confirmed we can:
+                                        ; (setq quarto-preview-watch-inputs t)
+                                        ; And the preview should reload automatically...
+                                        ; For now we have to use quarto preview from the terminal
+;;; Auto reload buffer for qmd files at least on save.
+;;; TODO
+
+
+;; Org-Roam
+(use-package! org)
+
+;; Define a function to insert `#+STARTUP: latexpreview` at the beginning of a new Org file
+(defun my/org-mode-setup ()
+  "Insert `#+STARTUP: latexpreview` at the beginning of a new Org file."
+  (when (and (string-equal (file-name-extension (or buffer-file-name "")) "org")
+             (= (point-min) (point-max)))
+    (insert "#+STARTUP: latexpreview\n\n")))
+;; Add the function to the Org-mode hook
+(add-hook 'org-mode-hook 'my/org-mode-setup)
+
+(use-package! org-roam
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "~/org-roam"))
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
+  :config
+  (org-roam-db-autosync-enable)
+  ;; If you're using a vertical completion framework, you might want a more informative completion interface
+  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+  )
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+(setq org-image-actual-width 600)
+;; Org-Roam-UI
+(use-package! websocket
+  :after org-roam)
+(use-package! org-roam-ui
+  :after org-roam ;; or :after org
+  ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
+  ;;         a hookable mode anymore, you're advised to pick something yourself
+  ;;         if you don't care about startup time, use
+  ;;  :hook (after-init . org-roam-ui-mode)
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
