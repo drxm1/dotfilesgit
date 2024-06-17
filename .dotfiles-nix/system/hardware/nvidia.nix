@@ -2,12 +2,6 @@
 
 {
   boot.blacklistedKernelModules = [ "nouveau" ];
-  # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -17,6 +11,7 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     prime = {
+      # TODO: Make this available as an Option!!
       intelBusId =
         "PCI:0:2:0"; # TODO | BUG: This is really device specific and should be in hosts/ or maybe hardware/
       nvidiaBusId =

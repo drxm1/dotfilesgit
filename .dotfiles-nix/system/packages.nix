@@ -1,0 +1,146 @@
+{ config, lib, pkgs, ... }:
+
+{
+  environment.systemPackages = with pkgs; [
+    # [COMMON] utils, editors, terminal programs, language support, ...
+    # not sure if we need all of this but who cares, just keep them all
+    vim_configurable
+    neovim
+    pciutils
+    lshw
+    kitty
+    wget
+    os-prober
+    gh
+    ispell
+    udiskie
+    udisks2
+    arch-install-scripts
+    acpi
+    gjs
+    gnomeExtensions.eval-gjs
+    killall
+    rsync
+    hollywood
+    brightnessctl
+    axel
+    cpio
+    fcitx5
+    tree
+    glm
+    glow
+    conky
+    tk
+    dart-sass
+    tinyxml-2
+    cargo
+    tkimg
+    tree-sitter
+    silver-searcher
+    sassc
+    ueberzug
+    tesseract
+    imagemagick
+    inotify-tools
+    mdcat
+    webp-pixbuf-loader
+    gojq
+    gcc
+    gtk3
+    gtk4
+    git
+    git-extras
+    bat
+    fd
+    catimg
+    asciidoctor-with-extensions
+    readability-cli
+    dhcpcd
+    djvulibre
+    ffmpegthumbnailer
+    efibootmgr
+    gparted
+    ldc
+    lsd
+    neofetch
+    ack
+    cups
+    ntfs3g
+    rclone
+    tmux
+    lazygit
+    ripgrep
+    unzip
+    speechd
+    signify
+    yad
+    ydotool
+    coreutils
+    clang
+    pandoc
+    shellcheck
+    git-crypt
+    gnupg
+    cmake
+    gnumake
+    gcc
+    libtool
+
+    tree-sitter-grammars.tree-sitter-nix
+
+    # [OS]
+    emacs-git # =emacsGcc (see overlays) installs emacs 28 + native-comp
+
+    # [WIRELESS] utils, ...
+    iw
+    iwd
+    wpa_supplicant
+    wpa_supplicant_ro_ssids
+    wpa_supplicant_gui
+
+    # [GRAPHICAL] stuff for wayland / hyprland and utils and drivers, nvidia/survace
+    libdbusmenu
+    libsForQt5.libdbusmenu
+    libdbusmenu-gtk3
+    libdbusmenu-gtk2
+    qt5.qtimageformats
+    xwaylandvideobridge
+    libsForQt5.layer-shell-qt
+    libva
+    libwacom-surface
+    surface-control
+    zenith-nvidia
+    # some random drivers might or might not do anything
+    xorg.xf86videointel
+    xorg.xf86inputmouse
+    xf86_input_wacom
+    xorg.xf86videovesa
+    # we add some xorg support that might come in handy for some compatibility idk
+    xorg.xset
+    xorg.xrdb
+    xorg.setxkbmap
+    xorg.xrandr
+    # needed for our sugardark sddm theme:
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
+
+    # [AUTH KEYRING] polkit, keyring, auth
+    polkit_gnome
+    gnome.gnome-keyring
+
+    # [BLUETOOTH] gnome bluetooth
+    gnome.gnome-bluetooth
+    gnome.gnome-bluetooth_1_0
+    gnomeExtensions.bluetooth-battery
+
+    ### KDE STUFF THAT MIGHT BE USEFUL ###
+    # REM30.4 kdePackages.kwallet kdePackages.kwalletmanager kwallet-pam kwalletcli kdePackages.kwallet-pam kdePackages.drkonqi kwayland-integration plasma-vault kdePackages.print-manager kdePackages.qtwayland
+
+    # qt6-wayland     -- not found on nixos pkgs
+    # TODO: other CRITICAL THINGS THAT HAVE NO EQUIVALENT PACKAGES
+    # TODO: CHECK IF GPU IS ACTUALLY WORKING!!!
+    # linux-surface
+    # linux-surface-headers
+    # libwacom-surface  -- might need some additional configuration as well here!
+  ];
+}

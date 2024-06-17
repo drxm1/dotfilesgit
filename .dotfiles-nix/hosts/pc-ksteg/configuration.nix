@@ -19,7 +19,6 @@
   };
   ############## but changed ... ################
 
-  # NOTE gamescope -e -- %command%
   # TODO this should be either gnome or hyprland not both...
   # services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;

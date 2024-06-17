@@ -18,4 +18,15 @@
     wlr.enable = true; # screen sharing
   };
   ############## but changed ... ################
+
+  fileSystems."/" = {
+    # TODO / BUG this is really only for surface laptop
+    device = lib.mkDefault "/dev/nvme0n1p3";
+    fsType = lib.mkDefault "ext4";
+  };
+  fileSystems."/boot" = {
+    # TODO / BUG this is really only for surface laptop
+    device = lib.mkDefault "/dev/nvme0n1p1";
+    fsType = lib.mkDefault "vfat";
+  };
 }

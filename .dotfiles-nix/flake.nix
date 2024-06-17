@@ -51,7 +51,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             nixos-hardware.nixosModules.microsoft-surface-common
-            #./hardware/surface-laptop-studio
+            #./system/hardware/surface-laptop-studio
             #hyprland.homeManagerModules.default
             ./hosts/surface-laptop-studio-2/configuration.nix
           ];

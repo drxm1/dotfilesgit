@@ -9,4 +9,8 @@
     gamescopeSession.enable = true;
     #platformOptimizations.enable = true;
   };
+
+  # Gamescope
+  programs.gamescope.enable = true;
+  # NOTE gamescope -e -- %command% could be useful try out
 }
