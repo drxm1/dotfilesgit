@@ -85,3 +85,12 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 ~/.emacs.d/bin/doom sync
 ```
 **TODO:** The Doom Emacs installation is not fully automatic yet. Either include the necessary commands to install or add automation to the Nix config.
+
+### 9. Install other stuff
+The other stuff here should really be installed declaratively with nixos but for now I was too lazy so just execute these in the end:
+
+``` sh
+cargo install --git https://github.com/nvarner/typst-lsp typst-lsp
+```
+warning: be sure to add `/home/domi/.cargo/bin` to your PATH to be able to run the installed binaries
+`
