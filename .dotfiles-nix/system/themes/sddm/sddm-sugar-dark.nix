@@ -1,12 +1,12 @@
 { pkgs }:
 let
-  imgLink = "https://raw.githubusercontent.com/dominikrosser/dotfiles/main/Pictures/WallpapersForHyprland/Desktop3.jpg";
+  imgLink =
+    "https://raw.githubusercontent.com/dominikrosser/dotfilesgit/main/Pictures/WallpapersForHyprland/Desktop3.jpg";
   image = pkgs.fetchurl {
     url = imgLink;
     sha256 = "07qhgdly0hyvy9v9c1gacakrlwwpnfd4q65x624ssrs7wdch3s5f";
   };
-in 
-pkgs.stdenv.mkDerivation {
+in pkgs.stdenv.mkDerivation {
   name = "sddm-theme-sugar-dark";
   src = pkgs.fetchFromGitHub {
     owner = "MarianArlt";
@@ -20,5 +20,5 @@ pkgs.stdenv.mkDerivation {
     cd $out/
     rm Background.jpg
     cp -r ${image} $out/Background.jpg
-    ''; # lol this works even if it is a png...
+  ''; # lol this works even if it is a png...
 }
