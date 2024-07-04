@@ -40,6 +40,17 @@ in {
     pinentryPackage = pkgs.pinentry-qt;
   };
 
+  programs.brave = {
+    enable = true;
+    commandLineArgs = [
+      "--password-store=gnome"
+      "--ozone-platform-hint=auto"
+      "--ignore-gpu-blocklist"
+      "--enable-gpu-rasterization"
+      "--enable-zero-copy"
+    ];
+  };
+
   # Direnv and Lorri
   # run 'lorri init' in the project roots
   # don't forget to also add a .projectile file and projectile-discover
