@@ -128,6 +128,15 @@ in {
     xsel
     wayshot
 
+    # rust
+    rust-analyzer
+    llvmPackages.bintools # lld linker
+    wasm-pack
+
+    # [EMACS]
+    # more treesitter grammars for example tree-sitter-wgsl
+    tree-sitter-grammars.tree-sitter-wgsl
+
     # [HYPRLAND] utils
     hyprshot
     hyprpaper
@@ -143,7 +152,7 @@ in {
 
     # [TYPST]
     typst
-    vimPlugins.nvim-treesitter-parsers.typst
+    # vimPlugins.nvim-treesitter-parsers.typst
     typst-lsp
     typst-live
     typst-preview
@@ -209,7 +218,7 @@ in {
     pywal
     python311Packages.pywayland
     python311Packages.setuptools-scm
-    nodePackages.pyright
+    pyright
 
     vimPlugins.coc-pyright # probably only need the one from nodePackages... maybe remove
     # REM30 smplayer  # A complete front-end for MPlayer

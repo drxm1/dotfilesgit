@@ -1,6 +1,7 @@
 # dotfiles-nix
 
 ## Installation
+<<<<<<< HEAD
 Install it as follows on a fresh NixOS installation.
 
 ### 1. Temporarily enable `git` and `vim`, and ensure flake support:
@@ -85,3 +86,28 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
 ~/.emacs.d/bin/doom sync
 ```
 **TODO:** The Doom Emacs installation is not fully automatic yet. Either include the necessary commands to install or add automation to the Nix config.
+
+### 9. Install other stuff
+The other stuff here should really be installed declaratively with nixos but for now I was too lazy so just execute these in the end:
+
+``` sh
+cargo install --git https://github.com/nvarner/typst-lsp typst-lsp
+```
+warning: be sure to add `/home/domi/.cargo/bin` to your PATH to be able to run the installed binaries
+`
+=======
+Install it as follows on a fresh nixos installation.
+```
+nix-shell -p git
+git clone --bare https://github.com/dominikrosser/dotfilesgit.git $HOME/.dotfiles.git
+echo "alias dotfilesgit='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'" >> $HOME/.bashrc
+source $HOME/.bashrc
+dotfilesgit checkout
+cd $HOME/.dotfiles-nix && sudo-nixos-rebuild switch --flake .
+cd $HOME/.dotfiles-nix && home-manager switch --flake .
+```
+<<<<<<< HEAD
+>>>>>>> fe7437a (Update README.md)
+=======
+TODO: Instructions to replicate or copy SSH keys and secret stuff.
+>>>>>>> 72aefaa (Update README.md)

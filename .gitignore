@@ -23,6 +23,8 @@ OneDrive/
 KameraRedmiNote/
 dev/
 .python_history
+.cargo/
+.rustup/
 
 ### every new device has its own hardware-configuration.nix copied from /etc/nixos/hardware-configuration.nix
 .dotfiles-nix/hardware-configuration.nix

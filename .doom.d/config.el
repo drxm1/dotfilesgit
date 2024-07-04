@@ -99,12 +99,6 @@
                                         ;        (equal project-root (expand-file-name "~/"))))
   )
 
-;; TODO / FIXME
-
-
-;; Typst Support
-
-
 ;; Emacs Doom E06 - evil snipe: quick horizontal movements
 ;; s for kangaroo jumps with two letters etc.
 ;; ALREADY ENABLED...
@@ -128,13 +122,30 @@
   (setq lsp-log-io t))
 
 ;; Typst
-                                        ; Load typst-ts-mode for typst files
+;; Load typst-ts-mode for typst files
+                                        ;(add-to-list 'treesit-language-source-alist
+                                        ;             '(typst "https://github.com/uben0/tree-sitter-typst"))
+                                        ;(treesit-install-language-grammar 'typst)
 (use-package! typst-ts-mode
   :mode "\\.typ\\'")
 (after! typst-ts-mode
   (setq typst-ts-mode-indent-offset 2)
   ;; Add more configuration as needed
   )
+;; TODO: This would be added later if I add consult-imenu-config...
+;; (setq
+;;  consult-imenu-config
+;;  (append consult-imenu-config
+;;          '((typst-ts-mode :topLevel "Headings" :types
+;;             ((?h "Headings" typst-ts-markup-header-face)
+;;              (?f "Functions" font-lock-function-name-face))))))
+
+                                        ;(add-to-list 'treesit-language-source-alist
+                                        ;             '(wgsl "https://github.com/szebniok/tree-sitter-wgsl"))
+                                        ;(treesit-install-language-grammar 'wgsl)
+(use-package! wgsl-ts-mode
+  :mode "\\.wgsl\\'")
+
 
 ;; Vterm
 (use-package! vterm
@@ -180,7 +191,7 @@
   :config
   (direnv-mode)
   ;; Add a hook to reload LSP after direnv is done
-  (add-hook 'direnv-env-changed-hook #'lsp-restart-workspace)
+  ;;(add-hook 'direnv-env-changed-hook #'lsp-restart-workspace)
   )
 
 ;; Quarto
