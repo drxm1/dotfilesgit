@@ -1,3 +1,4 @@
 .dotfiles-nix/.secrets/** filter=git-crypt diff=git-crypt
 org/** filter=git-crypt diff=git-crypt
 org-roam/** filter=git-crypt diff=git-crypt
+dev/setup-dev-projects.sh filter=git-crypt diff=git-crypt

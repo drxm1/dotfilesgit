@@ -22,14 +22,11 @@ Downloads/
 OneDrive/
 KameraRedmiNote/
 dev/
+!/dev/setup-dev-projects.sh
 .python_history
 .cargo/
 .rustup/
-
-### every new device has its own hardware-configuration.nix copied from /etc/nixos/hardware-configuration.nix
 .dotfiles-nix/hardware-configuration.nix
-
-### Unneeded configuration directories in .config
 .config/discord/
 .config/evolution/
 .config/gsd-keyboard.settings-ported
@@ -115,12 +112,8 @@ dev/
 .ssh/id_xmss
 .ssh/*.pem
 .ssh/*.key
-
-# Zoom configurations also not on source control
 .config/zoom.conf
 .config/zoomus.conf
-
-###### CHECK ######
 Pictures/smplayer_screenshots/
 Pictures/Screenshots/
 .gitconfig
