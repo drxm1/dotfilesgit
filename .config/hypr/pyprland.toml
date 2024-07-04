@@ -1,4 +1,5 @@
 [pyprland]
+hyprland_version = "0.41.2"
 plugins = ["scratchpads", "magnify", "layout_center"]
 
 [scratchpads.term]
@@ -16,7 +17,7 @@ animation = "fromRight"
 class = "pavucontrol"
 unfocus = "hide"
 lazy = true
-size = "40% 90%"
+size = "40% 80%"
 
 [layout_center]
 margin = 60

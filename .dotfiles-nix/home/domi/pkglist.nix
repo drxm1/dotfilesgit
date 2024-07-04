@@ -33,7 +33,7 @@ in {
     w3m
 
     # [FILE MANAGERS]
-    gnome.nautilus
+    nautilus
     nnn
     ranger
 

@@ -30,7 +30,10 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    pyprland = { url = "github:hyprland-community/pyprland"; };
+    pyprland = {
+      url = "github:hyprland-community/pyprland";
+      #inputs.hyprland.follows = "hyprland";
+    };
 
   };
   ##############################################################################################

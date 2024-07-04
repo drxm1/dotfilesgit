@@ -126,15 +126,12 @@
 
     # [AUTH KEYRING] polkit, keyring, auth
     polkit_gnome
-    gnome.gnome-keyring
+    gnome-keyring
 
     # [BLUETOOTH] gnome bluetooth
     gnome.gnome-bluetooth
     gnome.gnome-bluetooth_1_0
     gnomeExtensions.bluetooth-battery
-
-    ### KDE STUFF THAT MIGHT BE USEFUL ###
-    # REM30.4 kdePackages.kwallet kdePackages.kwalletmanager kwallet-pam kwalletcli kdePackages.kwallet-pam kdePackages.drkonqi kwayland-integration plasma-vault kdePackages.print-manager kdePackages.qtwayland
 
     # qt6-wayland     -- not found on nixos pkgs
     # TODO: other CRITICAL THINGS THAT HAVE NO EQUIVALENT PACKAGES
