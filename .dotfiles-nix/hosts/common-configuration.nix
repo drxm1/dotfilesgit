@@ -47,11 +47,6 @@
     ../system/programs/thunar.nix
   ];
 
-  services.dbus.enable = true;
-
-  services.gnome.gnome-keyring.enable =
-    true; # similar to KWallet, needed for brave to function.
-
   services.xserver = {
     xkb.layout = "ch";
     #TODO xkb.variant = "nodeadkeys";

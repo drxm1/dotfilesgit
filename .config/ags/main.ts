@@ -22,10 +22,10 @@ App.config({
         init()
     },
     closeWindowDelay: {
-        "launcher": 200, // milliseconds
-        "overview": 200, // milliseconds
-        "quicksettings": 200, // milliseconds
-        "datemenu": 200, // milliseconds
+        "launcher": options.transition.value,
+        "overview": options.transition.value,
+        "quicksettings": options.transition.value,
+        "datemenu": options.transition.value,
     },
     windows: () => [
         ...forMonitors(Bar),

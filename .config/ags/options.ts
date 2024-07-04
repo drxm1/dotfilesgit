@@ -76,7 +76,6 @@ const options = mkOptions(OPTIONS, {
             end: opt<BarWidget[]>([
                 //"media",
                 "expander",
-                "cpu_usage",
                 "domi_widget",
                 "system",
                 "date",

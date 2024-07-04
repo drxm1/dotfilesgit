@@ -20,9 +20,6 @@ in {
     # [syncthing: for synchronizing files with the phone]
     syncthing
 
-    # [CPU stats of apps running]
-    htop
-
     # [For displaying graph of org-roam]
     graphviz
 
@@ -30,7 +27,7 @@ in {
     inputs.pyprland.packages."x86_64-linux".pyprland
 
     # [BROWSERS]
-    # brave now managed pragrams.brave
+    brave
     firefox
     qutebrowser
     w3m
@@ -148,7 +145,7 @@ in {
     # [TOOLS]
     chezmoi
     # Print, scan and fax HP drivers for Linux
-    # hplip Removed since this is causing 97 % cpu usage sometimes!
+    hplip
 
     # [TYPST]
     typst

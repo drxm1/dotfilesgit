@@ -12,7 +12,6 @@ import Workspaces from "./buttons/Workspaces"
 import ScreenRecord from "./buttons/ScreenRecord"
 import Messages from "./buttons/Messages"
 import options from "options"
-import CpuUsage from "./buttons/CpuUsage"
 
 const { start, center, end } = options.bar.layout
 const pos = options.bar.position.bind()
@@ -33,7 +32,6 @@ const widget = {
     screenrecord: ScreenRecord,
     messages: Messages,
     domi_widget: DomiWidget,
-    cpu_usage: CpuUsage,
     expander: () => Widget.Box({ expand: true }),
 }
 
