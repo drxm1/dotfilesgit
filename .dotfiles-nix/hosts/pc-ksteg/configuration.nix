@@ -7,12 +7,7 @@
 {
   imports = [ ./hardware-configuration.nix ../common-configuration.nix ];
 
-  #xdg.portal.extraPortals = [
-  #  ## already included in gnome ... pkgs.xdg-desktop-portal-gtk
-  #  pkgs.xdg-desktop-portal-gnome
-  #  ## do not add this: pkgs.xdg-desktop-portal-hyprland  (it is already included)
-  #];
+  domiOptions.gpu.intelBusId = "PCI:99:9:9"; # dont have this here
+  domiOptions.gpu.nvidiaBusId = "PCI:01:0:0";
 
-  ## services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
 }
