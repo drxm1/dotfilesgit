@@ -15,7 +15,6 @@ in {
 
   imports = [
     ./home/${username}/sh.nix
-    #./home/${username}/anyrun.nix
     ./home/${username}/git.nix
     ./home/${username}/eww.nix
     ./home/${username}/ags.nix
@@ -31,8 +30,6 @@ in {
     lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       ln -sfn /home/domi/.dotfiles-nix/home/domi/dotconfig/eww $HOME/.config/eww
     ''; # Create a (for some reason readonly) symbolic link. for some reason also not editable here...
-
-  # TODO: Create the other symbolic links.
 
   programs.gpg = { enable = true; };
   services.gpg-agent = {

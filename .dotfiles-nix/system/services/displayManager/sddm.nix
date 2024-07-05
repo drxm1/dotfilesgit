@@ -6,7 +6,7 @@
   services.displayManager.sddm.settings.General.LogLevel = "debug";
   services.displayManager.sddm.wayland.enable = true;
   services.xserver.displayManager.sessionCommands = ''
-    ${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon --start --components=secrets &
+    ${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start --components=secrets &
     ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &
   '';
   services.xserver.enable = true;

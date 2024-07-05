@@ -1,11 +1,12 @@
 [pyprland]
+hyprland_version = "0.41.2"
 plugins = ["scratchpads", "magnify", "layout_center"]
 
 [scratchpads.term]
 animation = "fromTop"
 command = "kitty --class kitty-dropterm"
 class = "kitty-dropterm"
-size = "75% 60%"
+size = "80% 90%"
 margin = 50
 unfocus = "hide"
 max_size = "1920px 100%"
@@ -16,7 +17,7 @@ animation = "fromRight"
 class = "pavucontrol"
 unfocus = "hide"
 lazy = true
-size = "40% 90%"
+size = "40% 80%"
 
 [layout_center]
 margin = 60

@@ -20,17 +20,27 @@
     ags.url = "github:Aylur/ags";
 
     # Hyprland
-    hyprland.url =
-      "git+https://github.com/hyprwm/Hyprland?submodules=1"; # prev: "github:hyprwm/Hyprland";
+    hyprland = {
+      type = "git";
+      url = "https://github.com/hyprwm/Hyprland";
+      submodules = true;
+    };
     hyprgrass = {
       url = "github:horriblename/hyprgrass";
       inputs.hyprland.follows = "hyprland"; # IMPORTANT
+    };
+    hycov = {
+      url = "github:DreamMaoMao/hycov";
+      inputs.hyprland.follows = "hyprland";
     };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    pyprland = { url = "github:hyprland-community/pyprland"; };
+    pyprland = {
+      url = "github:hyprland-community/pyprland";
+      #inputs.hyprland.follows = "hyprland";
+    };
 
   };
   ##############################################################################################
@@ -51,8 +61,11 @@
           specialArgs = { inherit inputs; };
           modules = [
             nixos-hardware.nixosModules.microsoft-surface-common
-            #./system/hardware/surface-laptop-studio
-            #hyprland.homeManagerModules.default
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-gpu-nvidia
+            nixos-hardware.nixosModules.common-pc
+            nixos-hardware.nixosModules.common-pc-ssd
+            nixos-hardware.nixosModules.common-hidpi
             ./hosts/surface-laptop-studio-2/configuration.nix
           ];
         };
@@ -75,8 +88,6 @@
           modules = [ ./home.nix ];
         };
       };
-
-      # TODO: set env var somewhere...: export QT_QPA_PLATFORM=wayland
     };
   ##############################################################################################
 }

@@ -1,31 +1,32 @@
-{ config, inputs, pkgs, ... }:
-{
+{ config, inputs, pkgs, ... }: {
+
   wayland.windowManager.hyprland = {
-    enable = true;# TODO for now we have all the other files except hyprland local in ~/.config!!!
+    enable = true;
     xwayland.enable = true;
-    # settings = pkgs.lib.mkDefault {};
+
+    # defines additional content for hyprland.conf
     extraConfig = pkgs.lib.mkDefault ''
       $no_action = notify-send "Hello"
     '';
     # sourceFirst = false;
     systemd = {
       enable = true;
-      variables = ["--all"];
+      variables = [ "--all" ];
     };
     settings = {
-      source = "~/.config/hypr/hyprland_domi.conf"; # Wow this is ultra hacky, still requires us to keep all configs in .config directly.
+      # This defines the content (imports) of hyprland.conf
+      # We just import hyprland_domi.conf
+      # The rest is handled with just regular git repo sync
+      source =
+        # Wow this is ultra hacky, still requires us to keep all configs in .config directly.
+        "~/.config/hypr/hyprland_domi.conf";
     };
-    # systemd.extraCommands = ...;
     plugins = [
-       ## Re add later! inputs.hyprgrass.packages.${pkgs.system}.default
-       # inputs.hyprland-plugins.packages."${pkgs.system}".borders-plus-plus
+      inputs.hyprgrass.packages.${pkgs.system}.default
+      inputs.hycov.packages.${pkgs.system}.hycov
     ];
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    
+
   };
 
-  #home.file.".config/hypr" = {
-  #  source = ./.config/hypr;# TODO does not seem to link the config, still have to copy manually.
-  #  recursive = true;
-  #};
 }
