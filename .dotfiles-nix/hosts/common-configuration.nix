@@ -47,22 +47,21 @@
     ../system/programs/thunar.nix
   ];
 
-  services.xserver = {
-    xkb.layout = "ch";
-    #TODO xkb.variant = "nodeadkeys";
-  };
+  services.xserver = { xkb.layout = "ch"; };
+
+  xdg.portal.enable = true;
+  xdg.portal.wlr.enable = true; # screen sharing
+  xdg.portal.extraPortals = with pkgs; [
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-gnome
+    # do not add - it is already included in hyprland
+    # xdg-desktop-portal-hyprland
+  ];
 
   systemd.user.services.xdg-desktop-portal-hyprland = {
     wantedBy = [ "xdg-desktop-portal.service" ];
     before = [ "xdg-desktop-portal.service" ];
   };
-
-  # ???
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   environment.etc."vimrc".text = ''
     " get rid of maddening mouseclick-moves-cursor behavior
