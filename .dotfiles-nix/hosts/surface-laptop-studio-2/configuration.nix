@@ -3,11 +3,12 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, lib, pkgs, inputs, ... }:
-let
-  #nixoshardwaregit =
-  #  builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; };
-in {
+
+{
   imports = [ ./hardware-configuration.nix ../common-configuration.nix ];
+
+  domiOptions.gpu.intelBusId = "PCI:0:2:0";
+  domiOptions.gpu.nvidiaBusId = "PCI:16:0:0";
 
   fileSystems."/" = {
     device = lib.mkDefault "/dev/nvme0n1p3";

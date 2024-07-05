@@ -179,9 +179,6 @@ in {
     python312Packages.python-lsp-black
     python312Packages.pylsp-mypy
 
-    # [NVIM] utils / libraries mainly used for nvim
-    # ...
-
     # [ICON THEMES]
     gnome-icon-theme
     papirus-icon-theme
@@ -218,23 +215,11 @@ in {
     pyright
 
     vimPlugins.coc-pyright # probably only need the one from nodePackages... maybe remove
-    # REM30 smplayer  # A complete front-end for MPlayer
-
-    # REM30 xdg-desktop-portal-hyprland
-    # REM30 libsForQt5.xdg-desktop-portal-kde
 
     # asztal
     bun
-    # TODO: zathura-pdf-poppler
-
-    # x11_ssh_askpass
-
-    ### KDE STUFF ###
-    # REM30 spectacle
-    # REM30 plasma-browser-integration
 
     kdePackages.plasma-wayland-protocols
 
-    # REM30 polkit-kde-agent
-  ]); # ++ [ tree-sitter-nix ];
+  ]);
 }

@@ -14,8 +14,5 @@
     jack.enable = true;
     wireplumber.enable = true;
   };
-  # TODO configure Bluetooth Configuration for pipewire
-  # Need to fix my bluetooth sound on the new headphones!!!
-  # https://nixos.wiki/wiki/PipeWire
-  # MAYBE even use pulseaudio if that works better...
+
 }

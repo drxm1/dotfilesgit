@@ -20,8 +20,6 @@
     ags.url = "github:Aylur/ags";
 
     # Hyprland
-    #hyprland.url =
-    #  "git+https://github.com/hyprwm/Hyprland?submodules=1"; # prev: "github:hyprwm/Hyprland";
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
@@ -90,8 +88,6 @@
           modules = [ ./home.nix ];
         };
       };
-
-      # TODO: set env var somewhere...: export QT_QPA_PLATFORM=wayland
     };
   ##############################################################################################
 }

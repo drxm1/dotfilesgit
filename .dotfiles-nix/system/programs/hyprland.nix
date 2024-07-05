@@ -9,7 +9,7 @@
   environment.sessionVariables = rec {
     NIXOS_OZONE_WL = "1";
     NIXPKGS_ALLOW_UNFREE = "1";
+    QT_QPA_PLATFORM = "wayland";
   };
-  # NOTE some stuff is also managed by home-manager and other stuff via git repo src control!
 
 }

@@ -134,10 +134,5 @@
     gnomeExtensions.bluetooth-battery
 
     # qt6-wayland     -- not found on nixos pkgs
-    # TODO: other CRITICAL THINGS THAT HAVE NO EQUIVALENT PACKAGES
-    # TODO: CHECK IF GPU IS ACTUALLY WORKING!!!
-    # linux-surface
-    # linux-surface-headers
-    # libwacom-surface  -- might need some additional configuration as well here!
   ];
 }
