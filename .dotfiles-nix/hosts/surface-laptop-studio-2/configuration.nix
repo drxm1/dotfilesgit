@@ -8,7 +8,6 @@
   imports = [ ./hardware-configuration.nix ../common-configuration.nix ];
 
   domiOptions.gpu.intelBusId = "PCI:0:2:0";
-  #domiOptions.gpu.nvidiaBusId = "PCI:16:0:0";
   domiOptions.gpu.nvidiaBusId = "PCI:243:0:0";
 
   fileSystems."/" = {
