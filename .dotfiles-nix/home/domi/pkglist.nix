@@ -28,7 +28,8 @@ in {
 
     # [BROWSERS]
     brave
-    firefox
+    #firefox
+    firefox-devedition
     qutebrowser
     w3m
 
