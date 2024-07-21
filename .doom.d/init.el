@@ -81,7 +81,7 @@
        vterm               ; the best terminal emulation in Emacs (SPC o E)
 
        :checkers
-       syntax              ; tasing you for every semicolon you forget
+       (syntax +childframe)  ; tasing you for every semicolon you forget
        ;;(spell +flyspell)   ; tasing you for misspelling mispelling
        ;;grammar             ; tasing grammar mistake every you make
 
@@ -96,7 +96,8 @@
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
        lookup              ; navigate your code and its documentation
-       lsp                 ; M-x vscode
+       (lsp +peek)         ; M-x vscode
+       (flycheck +childframe)
        magit               ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
