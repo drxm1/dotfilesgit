@@ -6,7 +6,7 @@
   # Locate printers on network
   services.avahi = {
     enable = true;
-    nssmdns4 = true;
+    nssmdns4 = true; # previously was called nssmdns;
     openFirewall = true;
   };
 }
