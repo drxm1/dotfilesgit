@@ -10,7 +10,7 @@ nix-shell -p vim git --experimental-features 'nix-command flakes'
 
 ### 2. Clone dotfiles:
 ```sh
-git clone --bare https://github.com/dominikrosser/dotfilesgit.git $HOME/.dotfiles.git
+git clone --bare https://github.com/drxm1/dotfilesgit.git $HOME/.dotfiles.git
 echo "alias dotfilesgit='git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'" >> $HOME/.bashrc
 source $HOME/.bashrc && dotfilesgit checkout
 ```
@@ -65,7 +65,7 @@ This should display something reasonable (not encrypted) and then something encr
 If the repository does not work anymore, or if you want SSH, reset everything:
 ```sh
 rm -rf $HOME/.dotfiles.git
-git clone --bare git@github.com:dominikrosser/dotfilesgit.git $HOME/.dotfiles.git
+git clone --bare git@github.com:drxm1/dotfilesgit.git $HOME/.dotfiles.git
 dotfilesgit checkout --force
 dotfilesgit crypt unlock ~/.domi_keys/gitcrypt/private.gpg
 ```
