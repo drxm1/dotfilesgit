@@ -7,7 +7,7 @@
     (import (fetchTarball {
       url =
         "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-      sha256 = "1ysfibwg29l4y90hgvk6i0blhp4q7h1vwnfwilwkwhhgdg8n1ns5";
+      sha256 = "1h5cr9rcm7asm961s5czbbna4b18zlx9kiyd6p8v82xrz7ln3s7i";
     }))
   ];
 
@@ -16,7 +16,7 @@
   nix.settings.auto-optimise-store = true; # might slow down builds
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
-  nix.gc.options = "--delete-older-than 7d";
+  nix.gc.options = "--delete-older-than 64d";
   nix.extraOptions = ''
     min-free = ${toString (100 * 1024 * 1024)}
     max-free = ${toString (1024 * 1024 * 1024)}

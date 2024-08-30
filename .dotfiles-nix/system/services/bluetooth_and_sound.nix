@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  sound.enable = true;
+  # sound.enable = true;
   hardware.bluetooth.enable = true;
   hardware.pulseaudio.enable = false;
   hardware.pulseaudio.support32Bit = false;

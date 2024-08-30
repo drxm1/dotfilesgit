@@ -23,7 +23,10 @@
     };
     plugins = [
       inputs.hyprgrass.packages.${pkgs.system}.default
-      inputs.hycov.packages.${pkgs.system}.hycov
+      inputs.Hyprspace.packages.${pkgs.system}.default
+      # NOT Maintained currently:
+      # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+      # inputs.hycov.packages.${pkgs.system}.hycov
     ];
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
