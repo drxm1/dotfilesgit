@@ -28,8 +28,8 @@ in {
 
     # [BROWSERS]
     brave
-    #firefox
-    firefox-devedition
+    firefox
+    #firefox-devedition
     qutebrowser
     w3m
 
@@ -50,6 +50,7 @@ in {
     ventoy-full
 
     # [MEDIA] video, audio, pictures, pdf, ...
+    playerctl
     vlc
     kdePackages.okular
     gimp
@@ -153,7 +154,8 @@ in {
     # vimPlugins.nvim-treesitter-parsers.typst
     typst-lsp
     typst-live
-    typst-preview
+    #typst-preview
+    tinymist
     typstfmt
     prettypst
     typst-fmt
@@ -208,7 +210,7 @@ in {
 
     python311Packages.material-color-utilities
     python311Packages.matplotlib
-    python311Packages.pipx
+    # python311Packages.pipx
     pipx
     pywal
     python311Packages.pywayland

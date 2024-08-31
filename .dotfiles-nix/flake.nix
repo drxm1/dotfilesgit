@@ -20,10 +20,12 @@
     ags.url = "github:Aylur/ags";
 
     # Hyprland
+    # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=;";
     hyprland = {
       type = "git";
       url = "https://github.com/hyprwm/Hyprland";
       submodules = true;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprgrass = {
       url = "github:horriblename/hyprgrass";
@@ -40,6 +42,10 @@
     pyprland = {
       url = "github:hyprland-community/pyprland";
       #inputs.hyprland.follows = "hyprland";
+    };
+    Hyprspace = {
+      url = "github:KZDKM/Hyprspace";
+      inputs.hyprland.follows = "hyprland";
     };
 
   };

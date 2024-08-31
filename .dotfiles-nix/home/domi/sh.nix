@@ -28,6 +28,8 @@ in {
   };
   ### ### ###
 
+  nixpkgs.config.allowBroken = true;
+
   ### ZSH ###
   # Managing zsh not with nix.
   # We are currently managing it directly in the right place
