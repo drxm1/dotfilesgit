@@ -84,6 +84,14 @@
           modules = [ ./hosts/pc-ksteg/configuration.nix ];
         };
         #####################################
+
+        #####################################
+        test123 = lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/test123/configuration.nix ];
+        };
+        #####################################
       };
 
       ## HOME CONFIGURATIONS

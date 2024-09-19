@@ -20,7 +20,7 @@ const getKeybindList = () => {
     }
     return JSON.parse(data);
 };
-const keybindList = getKeybindList();
+const keybindList = null;// DOMI getKeybindList();
 
 const keySubstitutions = {
     "Super": "󰖳",
@@ -48,16 +48,17 @@ const Keybind = (keybindData, type) => { // type: either "keys" or "actions"
         label: text,
         className: "txt txt-small cheatsheet-action",
     })
-    return Widget.Box({
-        className: "spacing-h-10 cheatsheet-bind-lineheight",
-        children: type == "keys" ? [
-            ...(keybindData.mods.length > 0 ? [
-                ...keybindData.mods.map(Key),
-                Key("+"),
-            ] : []),
-            Key(keybindData.key),
-        ] : [Action(keybindData.comment)],
-    })
+    return null; // <-- DOMI just remove the keybind list!
+    // return Widget.Box({
+    //     className: "spacing-h-10 cheatsheet-bind-lineheight",
+    //     children: type == "keys" ? [
+    //         ...(keybindData.mods.length > 0 ? [
+    //             ...keybindData.mods.map(Key),
+    //             Key("+"),
+    //         ] : []),
+    //         Key(keybindData.key),
+    //     ] : [Action(keybindData.comment)],
+    // })
 }
 
 const Section = (sectionData, scope) => {

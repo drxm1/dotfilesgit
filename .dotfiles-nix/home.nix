@@ -26,6 +26,7 @@ in {
     inputs.ags.homeManagerModules.default
   ];
 
+  # TODO this can probably be removed we use ags now
   home.activation.createConfigLink =
     lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       ln -sfn /home/domi/.dotfiles-nix/home/domi/dotconfig/eww $HOME/.config/eww

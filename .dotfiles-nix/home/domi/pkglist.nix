@@ -127,6 +127,9 @@ in {
     xsel
     wayshot
 
+    # for ags
+    ddcutil
+
     # rust
     rust-analyzer
     llvmPackages.bintools # lld linker
@@ -148,6 +151,9 @@ in {
     chezmoi
     # Print, scan and fax HP drivers for Linux
     hplip
+
+    # [WOLFRAM]
+    # mathematica TODO
 
     # [TYPST]
     typst
