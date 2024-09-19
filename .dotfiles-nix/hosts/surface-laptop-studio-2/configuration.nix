@@ -34,6 +34,17 @@
     enable = true;
     touchpad.naturalScrolling = true;
     touchpad.accelSpeed = "0.8";
+    touchpad.disableWhileTyping = true;
+  };
+
+  # Enable better power management
+  services.thermald.enable = lib.mkDefault true;
+  services.tlp.enable = lib.mkDefault true;
+
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
   };
 
 }
