@@ -59,11 +59,25 @@
         ]
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1725753098,
         "narHash": "sha256-/NO/h/qD/eJXAQr/fHA4mdDgYsNT9thHQ+oT6KPi2ac=",
+||||||| 619d538
+        "lastModified": 1724850097,
+        "narHash": "sha256-3BHxvFb3NJzch1X8puRMkVZujOoarQ1llu3ZcwuvsKU=",
+=======
+        "lastModified": 1725016199,
+        "narHash": "sha256-2TMk7F2a27ZtOUW/bftkDyZKp3OQ71E5XnfKSUT8HZQ=",
+>>>>>>> 2e435ef3393f2cbaaac93915fe23ee6bd22093b6
         "owner": "hyprwm",
         "repo": "aquamarine",
+<<<<<<< HEAD
         "rev": "e4a13203112a036fc7f437d391c7810f3dd5ab52",
+||||||| 619d538
+        "rev": "23c7925dd31e79e8c06086ace3edb129a070ac01",
+=======
+        "rev": "cff00196f0fcf734a2bf164eb0dfdb6e58c5c906",
+>>>>>>> 2e435ef3393f2cbaaac93915fe23ee6bd22093b6
         "type": "github"
       },
       "original": {

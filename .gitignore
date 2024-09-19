@@ -4,6 +4,8 @@
 # ALIAS: dotfilesgit = "git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME";
 .dotfiles.git
 
+".config/GitHub Desktop/"
+
 .anacron.log
 .crontab-backup.txt
 .domi_hyprlog.sh
