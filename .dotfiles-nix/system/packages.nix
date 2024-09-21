@@ -2,6 +2,11 @@
 
 {
   environment.systemPackages = with pkgs; [
+    # OSK
+    wvkbd
+
+    rnote
+
     # [COMMON] utils, editors, terminal programs, language support, ...
     # not sure if we need all of this but who cares, just keep them all
     vim_configurable
@@ -95,8 +100,7 @@
     iw
     iwd
     wpa_supplicant
-    wpa_supplicant_ro_ssids
-    wpa_supplicant_gui
+    # wpa_supplicant_gui
 
     # [GRAPHICAL] stuff for wayland / hyprland and utils and drivers, nvidia/survace
     libdbusmenu
@@ -129,10 +133,13 @@
     gnome-keyring
 
     # [BLUETOOTH] gnome bluetooth
-    gnome.gnome-bluetooth
-    gnome.gnome-bluetooth_1_0
+    gnome-bluetooth
+    gnome-bluetooth_1_0
     gnomeExtensions.bluetooth-battery
 
     # qt6-wayland     -- not found on nixos pkgs
+
+    # useful for calibrating stylus pens
+    xinput_calibrator
   ];
 }

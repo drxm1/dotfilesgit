@@ -86,7 +86,8 @@ const Utilities = () => Box({
         }),
         UtilButton({
             name: 'Toggle on-screen keyboard', icon: 'keyboard', onClicked: () => {
-                toggleWindowOnAllMonitors('osk');
+                // toggleWindowOnAllMonitors('osk');
+                Utils.execAsync(`${App.configDir}/scripts/toggle-wvkbd.sh`).catch(print)
             }
         }),
     ]
