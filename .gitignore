@@ -76,6 +76,7 @@ dev/
 .config/xournalpp/
 # might include thunar config that we could add later:
 .config/xfce4/
+.wget-hsts
 # Would actually add this but it seems like some important files were lost there:
 # The lost files are /usr/share/qt6ct/colors/darker.conf and maybe more
 .config/qt6ct/
