@@ -1,11 +1,5 @@
-
-
-# This is the --bare git dotfilesgit repo
-# ALIAS: dotfilesgit = "git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME";
 .dotfiles.git
-
 ".config/GitHub Desktop/"
-
 .anacron.log
 .crontab-backup.txt
 .domi_hyprlog.sh
@@ -86,19 +80,15 @@ dev/
 # The lost files are /usr/share/qt6ct/colors/darker.conf and maybe more
 .config/qt6ct/
 
-### Needed configuration directories in .config that are symlinked by home-manager
 .config/systemd/
 .config/eww
 .config/environment.d
 .config/git/config
-.config/gtk-3.0/
+.config/gtk-3.0/gtk.css
+.config/gtk-3.0/settings.ini
 .config/gtk-4.0/
-# All the other hyprland configuration files are kept under version control,
-# but the main hyprland.conf that just imports these is managed by home-manager!
 .config/hypr/hyprland.conf
-# Emacs local stuff either symlinked or managed by doom:
 .config/emacs
-# Encryption related stuff NEVER on source control
 .domi_keys/
 .git-crypt/
 .ssh/id_ed*
