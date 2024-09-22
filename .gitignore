@@ -79,7 +79,7 @@ dev/
 # Would actually add this but it seems like some important files were lost there:
 # The lost files are /usr/share/qt6ct/colors/darker.conf and maybe more
 .config/qt6ct/
-
+.config/ags.config1/
 .config/systemd/
 .config/eww
 .config/environment.d
