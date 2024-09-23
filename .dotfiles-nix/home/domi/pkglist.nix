@@ -155,6 +155,10 @@ in {
     # [WOLFRAM]
     # mathematica TODO
 
+    # [Thunderbird]
+    # used for email and tasks-synchronization and maybe also calendar synchronization
+    thunderbird
+
     # [TYPST]
     typst
     # vimPlugins.nvim-treesitter-parsers.typst
