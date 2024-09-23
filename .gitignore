@@ -115,7 +115,8 @@ Pictures/Screenshots/
 .bash_profile.backup
 .cache/
 .cert/
-.bashrc 
+.bashrc
+.thunderbird
 .dscripts/
 .emacs.d/
 .gitconfig/
