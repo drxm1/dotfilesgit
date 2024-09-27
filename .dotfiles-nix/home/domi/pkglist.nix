@@ -149,6 +149,9 @@ in {
     # Print, scan and fax HP drivers for Linux
     hplip
 
+    # Audio
+    audacity
+
     # [TYPST]
     typst
     # vimPlugins.nvim-treesitter-parsers.typst
