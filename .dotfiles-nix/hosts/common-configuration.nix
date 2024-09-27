@@ -47,6 +47,11 @@
     ../system/programs/thunar.nix
   ];
 
+  # Enable i2c support and install i2c-tools, load i2c-dev module
+  hardware.i2c.enable = true;
+  environment.systemPackages = with pkgs; [ i2c-tools ];
+  boot.kernelModules = [ "i2c-dev" ];
+
   services.xserver = { xkb.layout = "ch"; };
 
   xdg.portal.enable = true;

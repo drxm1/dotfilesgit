@@ -5,7 +5,11 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ../common-configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ../common-configuration.nix
+    ../../system/services/xournalpp-sync.nix
+  ];
 
   domiOptions.gpu.intelBusId = "PCI:0:2:0";
   domiOptions.gpu.nvidiaBusId = "PCI:243:0:0";
@@ -29,11 +33,33 @@
     xf86_input_wacom
   ];
 
-  # Improve touchpad responsiveness
-  services.libinput = {
-    enable = true;
-    touchpad.naturalScrolling = true;
-    touchpad.accelSpeed = "0.8";
+  # Enable better power management
+  services.thermald.enable = lib.mkForce true;
+  services.tlp.enable = lib.mkForce true;
+
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
   };
 
+  services.libinput = {
+    enable = true;
+    touchpad = {
+      naturalScrolling = true;
+      accelSpeed = "0.8";
+      disableWhileTyping = true;
+      additionalOptions = ''
+        Option "PalmDetection" "on"
+        Option "PalmMinWidth" "5"
+        Option "PalmMinZ" "50"
+      '';
+    };
+  };
+  services.xserver.displayManager.sessionCommands = ''
+    xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
+  '';
+  services.fwupd.enable = true; # fwupdmgr
+  services.xserver.wacom.enable = true;
+  services.xserver.modules = [ pkgs.xf86_input_wacom ];
 }

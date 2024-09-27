@@ -127,6 +127,9 @@ in {
     xsel
     wayshot
 
+    # for ags
+    ddcutil
+
     # rust
     rust-analyzer
     llvmPackages.bintools # lld linker
@@ -151,6 +154,13 @@ in {
 
     # Audio
     audacity
+
+    # [WOLFRAM]
+    # mathematica TODO
+
+    # [Thunderbird]
+    # used for email and tasks-synchronization and maybe also calendar synchronization
+    thunderbird
 
     # [TYPST]
     typst
