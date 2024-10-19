@@ -155,6 +155,8 @@ in {
     # Audio
     audacity
 
+    ledger-live-desktop
+
     # [WOLFRAM]
     # mathematica TODO
 
