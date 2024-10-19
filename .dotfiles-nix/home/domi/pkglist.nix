@@ -152,6 +152,9 @@ in {
     # Print, scan and fax HP drivers for Linux
     hplip
 
+    # Audio
+    audacity
+
     # [WOLFRAM]
     # mathematica TODO
 
