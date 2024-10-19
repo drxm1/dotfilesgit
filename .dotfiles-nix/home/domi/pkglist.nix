@@ -164,6 +164,8 @@ in {
     # used for email and tasks-synchronization and maybe also calendar synchronization
     thunderbird
 
+    ledger-live-desktop
+
     # [TYPST]
     typst
     # vimPlugins.nvim-treesitter-parsers.typst
