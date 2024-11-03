@@ -22,6 +22,8 @@
 
 # Root-level hidden directories
 .cache/
+.steampath
+.steampid
 .cert/
 .cargo/
 .ds-cripts/
@@ -75,12 +77,15 @@ dev/
 .ssh/known_hosts.old
 .ssh/*.pem
 .ssh/*.key
+.domi_keys/
 
 # Config files and directories under .config
 .config/.gsd-keyboard.settings-ported
 .config/ags.backup2/
 .config/ags.config1/
 .config/anyrun/
+.config/eww
+.config/gemini_history.json
 .config/audacity/
 .config/BraveSoftware/
 .config/cat_installer/
