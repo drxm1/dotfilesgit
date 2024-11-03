@@ -27,6 +27,7 @@
 .cert/
 .cargo/
 .ds-cripts/
+.dscripts/
 .emacs.d/
 .git-crypt/
 .gitconfig/
