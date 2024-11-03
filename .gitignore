@@ -8,6 +8,10 @@
 .bash_history
 .bash_history-*.tmp
 OneDrive.2024.29.04.bak/
+".config/Ledger Live/"
+".config/GitHub Desktop/"
+.config/audacity
+.zcompdump.nixos.*
 .hplip/
 .nvidia-settings-rc
 .nbrc
