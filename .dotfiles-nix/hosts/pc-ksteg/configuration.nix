@@ -10,4 +10,6 @@
   domiOptions.gpu.intelBusId = "PCI:99:9:9"; # dont have this here
   domiOptions.gpu.nvidiaBusId = "PCI:01:0:0";
 
+
+
 }
