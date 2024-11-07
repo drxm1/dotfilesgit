@@ -26,6 +26,10 @@
   # Enable IPTSD for better touchscreen and stylus support
   services.iptsd.enable = true;
 
+  # Enable some logitech stuff
+  hardware.logitech.wireless.enable = true;
+  hardware.logitech.lcd.enable = true;
+
   # Add packages important for surface device
   environment.systemPackages = with pkgs; [
     surface-control

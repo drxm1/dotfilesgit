@@ -23,7 +23,7 @@
     arch-install-scripts
     acpi
     gjs
-    gnomeExtensions.eval-gjs
+    # gnomeExtensions.eval-gjs had to remove this as it does not seem to exist anymore
     killall
     rsync
     hollywood

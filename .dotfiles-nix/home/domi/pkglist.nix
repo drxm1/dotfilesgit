@@ -102,7 +102,7 @@ in {
 
     # [QT]
     kdePackages.qt6gtk2
-    qt5ct
+    libsForQt5.qt5ct
     qt6ct
     pinentry-qt
 
@@ -117,7 +117,7 @@ in {
     wlsunset
     wl-gammactl
     wmctrl
-    wf-recorder
+    # wf-recorder TEMPORARY REMOVED SINCE IT DOES NOT COMPILE
     grimblast
     eww
     dunst
@@ -193,7 +193,7 @@ in {
     python312Packages.pyflakes
     isort
     python312Packages.pytest
-    python311Packages.nose
+    # python311Packages.nose
     python312Packages.pyls-isort
     python312Packages.python-lsp-server
     python312Packages.python-lsp-black
