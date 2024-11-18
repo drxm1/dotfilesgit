@@ -22,10 +22,19 @@
         "~/.config/hypr/hyprland_domi.conf";
     };
     plugins = [
+      # Hyprgrass: Plugin for touch Gestures.
       inputs.hyprgrass.packages.${pkgs.system}.default
-      inputs.Hyprspace.packages.${pkgs.system}.default
-      # NOT Maintained currently:
+
+      # TODO: Overview Plugin it is maintained but does not seem to work currently
+      # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace
+
+      # TODO: Overview Plugin it is maintained but does not seem to work currently
       # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+
+      # TODO: we are seeing if this works TODO: also configure it in hyprland:
+      # inputs.split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+
+      # NOT Maintained currently (probably soon dead):
       # inputs.hycov.packages.${pkgs.system}.hycov
     ];
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;

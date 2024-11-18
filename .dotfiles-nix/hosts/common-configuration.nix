@@ -5,6 +5,7 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
+
   time.timeZone = "Europe/Zurich";
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "sg";
