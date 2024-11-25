@@ -33,11 +33,11 @@ const centerWidgets = [
         contentWidget: ModuleWifiNetworks,
         onFocus: () => execAsync('nmcli dev wifi list').catch(print),
     },
-    // {
-    //     name: 'Notifications',
-    //     materialIcon: 'notifications',
-    //     contentWidget: ModuleNotificationList,
-    // },
+    {
+        name: 'Notifications',
+        materialIcon: 'notifications',
+        contentWidget: ModuleNotificationList,
+    },
     {
         name: 'Audio controls',
         materialIcon: 'volume_up',
@@ -48,7 +48,7 @@ const centerWidgets = [
         materialIcon: 'bluetooth',
         contentWidget: ModuleBluetooth,
     },
-    // {
+    // { DOMI REMOVED
     //     name: 'Live config',
     //     materialIcon: 'tune',
     //     contentWidget: ModuleConfigure,
