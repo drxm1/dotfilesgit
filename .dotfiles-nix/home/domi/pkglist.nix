@@ -290,7 +290,6 @@ in {
     plemoljp-nf
     hackgen-nf-font
     udev-gothic-nf
->>>>>>> f26d7608956d2d9df6f249a60b5b9353df04d975
 
     # [STEAM]
     protonup-qt
