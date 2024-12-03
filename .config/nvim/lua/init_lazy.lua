@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 -- The plugins are installed and configured in ~/.config/nvim/lua/plugins/...
 require("lazy").setup("plugins")
 
-local bufferline = require("bufferline")
+--[[ local bufferline = require("bufferline")
 bufferline.setup({
 	options = {
 		mode = "buffers",
@@ -39,4 +39,4 @@ bufferline.setup({
 		always_show_bufferline = true,
 		sort_by = "insert_after_current",
 	},
-})
+}) ]]

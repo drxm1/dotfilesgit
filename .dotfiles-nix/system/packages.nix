@@ -94,7 +94,8 @@
     tree-sitter-grammars.tree-sitter-nix
 
     # [OS]
-    emacs-git # =emacsGcc (see overlays) installs emacs 28 + native-comp
+    # emacs-git # =emacsGcc (see overlays) installs emacs 28 + native-comp
+    emacs30
 
     # [WIRELESS] utils, ...
     iw

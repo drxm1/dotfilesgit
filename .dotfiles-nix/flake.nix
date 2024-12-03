@@ -17,7 +17,7 @@
     tree-sitter-nix-flake.url = "github:nix-community/tree-sitter-nix";
 
     # Ags
-    ags.url = "github:Aylur/ags";
+    ags.url = "github:Aylur/ags/v1";
 
     # Hyprland
     # hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=;";

@@ -2,7 +2,7 @@
 vim.keymap.set("n", "<leader>q", ":lua DomiCloseBuffer()<CR>", { noremap = true, silent = true })
 --vim.keymap.set("n", "<leader>q", ":q<CR>", {})
 vim.keymap.set("n", "<leader>w", ":w<CR>", {})
-vim.keymap.set('n', ':q', ':Q<CR><CR>', { noremap = true, silent = true })
+-- vim.keymap.set('n', ':q', ':Q<CR><CR>', { noremap = true, silent = true })
 vim.keymap.set({'n','i'}, '<C-s>', '<ESC>:w<CR>', {})
 
 -- Move between windows with Ctrl+hjkl

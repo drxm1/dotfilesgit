@@ -218,7 +218,6 @@ in {
     iosevka
     rubik
     lexend
-    emacsPackages.all-the-icons-nerd-fonts
     nerd-fonts.zed-mono
     nerd-fonts.victor-mono
     nerd-fonts.ubuntu-sans

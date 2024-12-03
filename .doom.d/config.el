@@ -4,17 +4,18 @@
       user-mail-address "dominik.rosser@protonmail.ch")
 
 ;; Set the FiraCode Nerd Font
-(setq doom-font (font-spec :family "FiraCode Nerd Font" :size 20)
-      doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 20)
-      doom-big-font (font-spec :family "FiraCode Nerd Font" :size 26)
-      doom-symbol-font (font-spec :family "FiraCode Nerd Font" :size 20)
-      doom-serif-font (font-spec :family "FiraCode Nerd Font" :weight 'light))
+(setq doom-font (font-spec :family "UDEV Gothic" :size 20)
+      doom-variable-pitch-font (font-spec :family "UDEV Gothic" :size 20)
+      doom-big-font (font-spec :family "UDEV Gothic" :size 26)
+      doom-symbol-font (font-spec :family "UDEV Gothic" :size 20)
+      doom-serif-font (font-spec :family "UDEV Gothic" :weight 'light))
 
 ;; Doom Theme
 (setq doom-theme 'doom-snazzy)
 
 ;; Display Line Numbers
-(setq display-line-numbers-type nil);'relative)
+                                        ;(setq display-line-numbers-type nil)
+(setq display-line-numbers-type 'relative)
 
 ;; Org Mode default directory
 (setq org-directory "~/org/")
@@ -23,7 +24,7 @@
 ;; we probably need these tweaks:
 (setq projectile-project-search-path
       '("~/.config/hypr/" "~/.config/ags/" "~/.config/nvim/"
-        "~/dev" "~/.doom.d/"))
+        "~/dev" "~/.doom.d/" "~/.dotfiles-nix"))
 (after! projectile
   (setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up))
   )
