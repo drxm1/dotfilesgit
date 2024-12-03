@@ -13,7 +13,7 @@ $bar_ws_width_focus_active: 2.045rem;
 }
 
 .bar-bg {
-    background-color: $layer0;
+    background-color: rgba($layer0, 0.6);// DOMI STYLE CHANGE THIS IF THE BACKGROUND IMAGE IS TOO VISIBLE!
     min-height: 2.727rem;
 }
 
@@ -40,7 +40,7 @@ $bar_ws_width_focus_active: 2.045rem;
 }
 
 .bar-group {
-    background-color: $layer1;
+    background-color: rgba($layer1, 0.2);
 }
 
 .bar-group-pad {
@@ -378,11 +378,14 @@ $bar_ws_width_focus_active: 2.045rem;
 }
 
 .bar-util-btn {
-    @include full-rounding;
+    // DOMI REM CHANGED @include full-rounding;
     @include element_decel;
-    min-height: 1.77rem;
-    min-width: 1.77rem;
-    background-color: $utilsLayer2;
+    // DOMI REM CHANGED min-height: 1.77rem;
+    // DOMI REM CHANGED min-width: 1.77rem;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+
+    background-color: rgba(0,0,0,0.2);// DOMI <-- $utilsLayer2;
     color: $utilsOnLayer2;
 }
 

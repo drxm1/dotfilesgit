@@ -30,7 +30,7 @@ const BarGroup = ({ child }) => Box({
     className: 'bar-group-margin bar-sides',
     children: [
         Box({
-            className: 'bar-group bar-group-standalone bar-group-pad-system',
+            className: 'bar-group-pad-system', // DOMI REM 'bar-group bar-group-standalone bar-group-pad-system',
             children: [child],
         }),
     ]

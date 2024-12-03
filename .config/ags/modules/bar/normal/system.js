@@ -71,11 +71,11 @@ const UtilButton = ({ name, icon, onClicked }) => Button({
 
 const Utilities = () => Box({
     hpack: 'center',
-    className: 'spacing-h-4',
+    className: 'spacing-h-4',//'spacing-h-4',
     children: [
         UtilButton({
             name: 'Screen snip', icon: 'screenshot_region', onClicked: () => {
-                Utils.execAsync(`${App.configDir}/scripts/grimblast.sh copy area`)
+                Utils.execAsync(`${App.configDir}/scripts/grimblast.sh --freeze copysave area /home/domi/Pictures/Screenshots/screen.png`)//copy area`)
                     .catch(print)
             }
         }),
@@ -88,6 +88,11 @@ const Utilities = () => Box({
             name: 'Toggle on-screen keyboard', icon: 'keyboard', onClicked: () => {
                 // toggleWindowOnAllMonitors('osk');
                 Utils.execAsync(`${App.configDir}/scripts/toggle-wvkbd.sh`).catch(print)
+            }
+        }),
+        UtilButton({
+            name: "Toggle Fullscreen", icon: 'F', onClicked: () => {
+                Utils.execAsync(['hyprctl', 'dispatch', 'fullscreen', '1']).catch(print)
             }
         }),
     ]
@@ -146,11 +151,13 @@ const BatteryModule = () => Stack({
     children: {
         'laptop': Box({
             className: 'spacing-h-4', children: [
-                BarGroup({ child: Utilities() }),
+                // DOMI REM CHANGED BarGroup({ child: Utilities() }), to ->
+                Utilities(),
+
                 BarGroup({ child: BarBattery() }),
             ]
         }),
-        'desktop': BarGroup({
+        'desktop': BarGroup({ // DOMI TODO Remove this weather stuff its not useful.
             child: Box({
                 hexpand: true,
                 hpack: 'center',
