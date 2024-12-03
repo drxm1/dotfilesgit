@@ -218,7 +218,6 @@ in {
     iosevka
     rubik
     lexend
-    nerdfonts
 
     # [STEAM]
     protonup-qt
