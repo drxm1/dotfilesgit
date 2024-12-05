@@ -49,6 +49,9 @@ in {
     # [ISO CREATION UTILS]
     ventoy-full
 
+    # OTHER APPS
+    obsidian
+
     # [MEDIA] video, audio, pictures, pdf, ...
     playerctl
     vlc
