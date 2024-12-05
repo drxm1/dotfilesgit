@@ -25,6 +25,15 @@
 
   # Enable IPTSD for better touchscreen and stylus support
   services.iptsd.enable = true;
+  services.iptsd.config = {
+    Touchscreen.DisableOnPalm = true;
+    Touchscreen.DisableOnStylus = true;
+    Stylus.Disable = false;
+  };
+  users.users.domi.extraGroups = [ "surface-control" ];
+
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.enable = lib.mkDefault true;
 
   # Enable some logitech stuff
   hardware.logitech.wireless.enable = true;
