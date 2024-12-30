@@ -17,6 +17,8 @@ in {
     # [LATEX (tex-live)]
     tex
 
+    pdfmixtool
+
     # [syncthing: for synchronizing files with the phone]
     syncthing
 
@@ -48,6 +50,9 @@ in {
 
     # [ISO CREATION UTILS]
     ventoy-full
+
+    # OTHER APPS
+    obsidian
 
     # [MEDIA] video, audio, pictures, pdf, ...
     playerctl

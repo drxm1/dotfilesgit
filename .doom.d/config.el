@@ -53,9 +53,9 @@
 ;; Typst
 ;; Load typst-ts-mode for typst files
 ;; Execute this once:
-;;(add-to-list 'treesit-language-source-alist
-;;             '(typst "https://github.com/uben0/tree-sitter-typst"))
-;;(treesit-install-language-grammar 'typst)
+                                        ;(add-to-list 'treesit-language-source-alist
+                                        ;             '(typst "https://github.com/uben0/tree-sitter-typst"))
+                                        ;(treesit-install-language-grammar 'typst)
 (use-package! typst-ts-mode
   :mode "\\.typ\\'")
 (after! typst-ts-mode
