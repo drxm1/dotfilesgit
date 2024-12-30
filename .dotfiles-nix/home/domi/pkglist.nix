@@ -211,6 +211,8 @@ in {
     material-symbols
     papirus-icon-theme
 
+    qalculate-gtk
+
     # [FONTS]
     jetbrains-mono
     victor-mono
@@ -289,6 +291,8 @@ in {
     plemoljp-nf
     hackgen-nf-font
     udev-gothic-nf
+    liberation_ttf
+    arkpandora_ttf
 
     # [STEAM]
     protonup-qt

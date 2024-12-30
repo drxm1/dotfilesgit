@@ -13,6 +13,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Global rust-overlay
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Tree-sitter
     tree-sitter-nix-flake.url = "github:nix-community/tree-sitter-nix";
 
@@ -57,7 +63,7 @@
 
   ### OUTPUTS ##################################################################################
   outputs = { self, nixpkgs, nixos-hardware, home-manager, ags, hyprgrass
-    , hyprland, tree-sitter-nix-flake, ... }@inputs:
+    , hyprland, tree-sitter-nix-flake, rust-overlay, ... }@inputs:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -77,6 +83,11 @@
             nixos-hardware.nixosModules.common-pc-ssd
             nixos-hardware.nixosModules.common-hidpi
             ./hosts/surface-laptop-studio-2/configuration.nix
+            ({ pkgs, ... }: {
+              nixpkgs.overlays = [ rust-overlay.overlays.default ];
+              environment.systemPackages =
+                [ pkgs.rust-bin.stable.latest.default ];
+            })
           ];
         };
         #####################################
@@ -85,15 +96,14 @@
         pc = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/pc-ksteg/configuration.nix ];
-        };
-        #####################################
-
-        #####################################
-        test123 = lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [ ./hosts/test123/configuration.nix ];
+          modules = [
+            ./hosts/pc-ksteg/configuration.nix
+            ({ pkgs, ... }: {
+              nixpkgs.overlays = [ rust-overlay.overlays.default ];
+              environment.systemPackages =
+                [ pkgs.rust-bin.stable.latest.default ];
+            })
+          ];
         };
         #####################################
       };

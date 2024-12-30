@@ -23,7 +23,7 @@
     };
     plugins = [
       # Hyprgrass: Plugin for touch Gestures.
-      inputs.hyprgrass.packages.${pkgs.system}.default
+      # TODO: removed temporarily on PC: inputs.hyprgrass.packages.${pkgs.system}.default
 
       # TODO: Overview Plugin it is maintained but does not seem to work currently
       # inputs.Hyprspace.packages.${pkgs.system}.Hyprspace

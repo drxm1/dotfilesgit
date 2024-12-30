@@ -116,7 +116,7 @@
     surface-control
     zenith-nvidia
     # some random drivers might or might not do anything
-    xorg.xf86videointel
+    # xorg.xf86videointel
     xorg.xf86inputmouse
     xf86_input_wacom
     xorg.xf86videovesa

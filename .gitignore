@@ -81,6 +81,10 @@ dev/
 .domi_keys/
 
 # Config files and directories under .config
+.config/qalculate/
+.pulse-cookie
+CryptoLogging/
+TMP/
 .config/.gsd-keyboard.settings-ported
 .config/ags.backup2/
 .config/ags.config1/

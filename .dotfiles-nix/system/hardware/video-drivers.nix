@@ -1,5 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-  services.xserver.videoDrivers = [ "nvidia" "modesetting" "vesa" "intel" ];
+  services.xserver.videoDrivers = [
+    "nvidia"
+    "modesetting"
+    "vesa"
+    # "intel"
+  ];
 }
