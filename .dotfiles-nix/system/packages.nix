@@ -26,7 +26,7 @@
     # gnomeExtensions.eval-gjs had to remove this as it does not seem to exist anymore
     killall
     rsync
-    hollywood
+    # hollywood
     brightnessctl
     axel
     cpio
