@@ -17,6 +17,8 @@ in {
     # [LATEX (tex-live)]
     tex
 
+    pdfmixtool
+
     # [syncthing: for synchronizing files with the phone]
     syncthing
 
