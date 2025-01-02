@@ -1,5 +1,5 @@
 [pyprland]
-hyprland_version = "0.45.0"
+hyprland_version = "0.46.0"
 plugins = ["scratchpads", "magnify", "layout_center"]
 
 [scratchpads.term]
