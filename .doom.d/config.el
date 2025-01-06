@@ -1,183 +1,73 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-
 (setq user-full-name "Dominik Rosser"
       user-mail-address "dominik.rosser@protonmail.ch")
 
-;; Set the FiraCode Nerd Font
+;; FONT
 (setq doom-font (font-spec :family "UDEV Gothic" :size 20)
       doom-variable-pitch-font (font-spec :family "UDEV Gothic" :size 20)
       doom-big-font (font-spec :family "UDEV Gothic" :size 26)
       doom-symbol-font (font-spec :family "UDEV Gothic" :size 20)
       doom-serif-font (font-spec :family "UDEV Gothic" :weight 'light))
 
-;; Doom Theme
-(setq doom-theme 'doom-snazzy)
+;; THEME
+(setq doom-theme 'doom-pine) ; doom-flatwhite,leuven-dark,doom-snazzy, doom-one
 
-;; Display Line Numbers
-                                        ;(setq display-line-numbers-type nil)
-(setq display-line-numbers-type 'relative)
+;; QUICK CONFIG ONELINERS
+(setq display-line-numbers-type 'relative) ; nil
+(after! lsp-mode (setq lsp-log-io t)) ; enable IO logging for lsp
+(setq avy-all-windows t) ; move to words with 'g-s-SPC'
 
-;; Org Mode default directory
-(setq org-directory "~/org/")
-
-;; Since we have a git repo in our $HOME for the dotfiles,
-;; we probably need these tweaks:
+;; PROJECTILE
 (setq projectile-project-search-path
       '("~/.config/hypr/" "~/.config/ags/" "~/.config/nvim/"
         "~/dev" "~/.doom.d/" "~/.dotfiles-nix"))
-(after! projectile
-  (setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up))
-  )
+(after! projectile (setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up))) ; since we have --bare repo in $HOME we need to tweak this
 
-;; Evil Snipe:
-;; s for kangaroo jumps with two letters etc.
-
-;; Avy: moving on the screen easily
-;; g + s + SPACE
-(setq avy-all-windows t)
-
-;; Dired
-(evil-define-key 'normal dired-mode-map
-  (kbd "h") 'dired-up-directory
+;; DIRED
+(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory
   (kbd "l") 'dired-open-file
   )
-(after! dired
-  (map! :map dired-mode-map
-        :n "b" #'browse-url-of-dired-file))
-
-;; Enable IO logging for lsp
-(use-package! lsp-mode
-  :config
-  (setq lsp-log-io t))
 
 ;; Typst
-;; Load typst-ts-mode for typst files
-;; Execute this once:
-                                        ;(add-to-list 'treesit-language-source-alist
-                                        ;             '(typst "https://github.com/uben0/tree-sitter-typst"))
-                                        ;(treesit-install-language-grammar 'typst)
-(use-package! typst-ts-mode
-  :mode "\\.typ\\'")
+;; Execute this once 'SPC-o-E':
+;; (add-to-list 'treesit-language-source-alist '(typst "https://github.com/uben0/tree-sitter-typst"))
+;; (treesit-install-language-grammar 'typst)
+(use-package! typst-ts-mode :mode "\\.typ\\'")
 (after! typst-ts-mode
   (setq typst-ts-mode-indent-offset 2)
-  ;; Add more configuration as needed
+  ;; TODO: maybe need to add some other stuff if we choose to add consult-imenu-config
   )
-;; TODO: This would be added later if I add consult-imenu-config...
-;; (setq
-;;  consult-imenu-config
-;;  (append consult-imenu-config
-;;          '((typst-ts-mode :topLevel "Headings" :types
-;;             ((?h "Headings" typst-ts-markup-header-face)
-;;              (?f "Functions" font-lock-function-name-face))))))
 
-;; Execute this once:
-;;(add-to-list 'treesit-language-source-alist
-;;             '(wgsl "https://github.com/szebniok/tree-sitter-wgsl"))
-;;(treesit-install-language-grammar 'wgsl)
+;; Execute this once 'SPC-o-E':
+;; (add-to-list 'treesit-language-source-alist '(wgsl "https://github.com/szebniok/tree-sitter-wgsl"))
+;; (treesit-install-language-grammar 'wgsl)
 (use-package! wgsl-ts-mode
   :mode "\\.wgsl\\'")
 
-;; Vterm
+;; VTERM
 (use-package! vterm
   :commands vterm
   :config
   ;; Set the default shell to the user's shell;
-  (setq vterm-shell "/run/current-system/sw/bin/zsh");(getenv "SHELL"))
-  )
+  (setq vterm-shell "/run/current-system/sw/bin/zsh"))
 (map! :leader
       :desc "Open vterm" "o t" #'vterm)
 
 ;; Nix language support
-(use-package! tree-sitter-langs
-  :ensure t
-  :after tree-sitter)
+(use-package! tree-sitter-langs :after tree-sitter)
+
 ;; Nix mode
 (use-package! nix-mode
   :mode "\\.nix\\'"
-  :hook (nix-mode . format-all-mode)
   :config
-  (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode))
-  (setq-hook! 'nix-mode-hook
-    indent-tabs-mode nil ; Use spaces instead of tabs
-    tab-width 2)         ; Set tab width to 2 spaces
-  )
-;; Nix formatter
-(use-package! reformatter
-  :config
-  (reformatter-define nixfmt
-    :program "nixfmt"
-    :args '()))
-(add-hook 'nix-mode-hook
-          (lambda ()
-            (add-hook 'before-save-hook #'nixfmt-buffer nil t)))
+  (setq-hook! 'nix-mode-hook indent-tabs-mode nil tab-width 2))
 
-;; Direnv
-(use-package! direnv
-  :config
-  (direnv-mode)
-  )
-
-;; Quarto
-(use-package! quarto-mode)
-(use-package! polymode)
-(use-package! poly-markdown)
-(use-package! request)
-;;; NOTE:
-;; if the pull request is confirmed we can:
-;; (setq quarto-preview-watch-inputs t)
-;; And the preview should reload automatically...
-;; For now we have to use quarto preview from the terminal
-;;; Auto reload buffer for qmd files at least on save.
-;;; TODO
-
-;; Org-Roam
-(use-package! org)
-
-;; Define a function to insert `#+STARTUP: latexpreview` at the beginning of a new Org file
-(defun my/org-mode-setup ()
-  "Insert `#+STARTUP: latexpreview` at the beginning of a new Org file."
-  (when (and (string-equal (file-name-extension (or buffer-file-name "")) "org")
-             (= (point-min) (point-max)))
-    (insert "#+STARTUP: latexpreview\n\n")))
-;; Add the function to the Org-mode hook
-(add-hook 'org-mode-hook 'my/org-mode-setup)
-
-(use-package! org-roam
-  :ensure t
-  :custom
-  (org-roam-directory (file-truename "~/org-roam"))
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n g" . org-roam-graph)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n c" . org-roam-capture)
-         ;; Dailies
-         ("C-c n j" . org-roam-dailies-capture-today))
-  :config
-  (org-roam-db-autosync-enable)
-  ;; If you're using a vertical completion framework, you might want a more informative completion interface
-  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-  )
-(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
-(setq org-image-actual-width 600)
-;; Org-Roam-UI
-(use-package! websocket
-  :after org-roam)
-(use-package! org-roam-ui
-  :after org-roam ;; or :after org
-  ;;         normally we'd recommend hooking orui after org-roam, but since org-roam does not have
-  ;;         a hookable mode anymore, you're advised to pick something yourself
-  ;;         if you don't care about startup time, use
-  ;;  :hook (after-init . org-roam-ui-mode)
-  :config
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start t))
+;; Direnv - should be enabled by init.el...
+;; (use-package! direnv :config (direnv-mode))
 
 ;; PDF configuration
-(pdf-tools-install)
 (pdf-loader-install)
+
 ;; PDF autorealoading
 (use-package! pdf-tools
   :config
@@ -185,12 +75,13 @@
   (setq-default pdf-view-display-size 'fit-page)
   (setq pdf-view-use-scaling t
         pdf-view-use-imagemagick nil)
+  ;; Some weird script that seems to help autoreloading pdf on every change like in 'typst watch'
   (defvar my-pdf-revert-attempts 10)
   (defvar my-pdf-revert-interval 0.3)
   (defun my-pdf-view-revert-buffer-repeatedly (buffer attempts)
     (when (and (buffer-live-p buffer) (> attempts 0))
       (with-current-buffer buffer
-        (when (eq major-mode 'pdf-view-mode)
+        (when (derived-mode-p 'pdf-view-mode)
           (let ((was-modified (buffer-modified-p))
                 (inhibit-message t))
             (pdf-view-revert-buffer nil t)
@@ -198,14 +89,54 @@
       (run-with-timer my-pdf-revert-interval nil
                       #'my-pdf-view-revert-buffer-repeatedly
                       buffer (1- attempts))))
+  ;;
+  (defvar my-pdf-revert-timer nil)
   (defun my-pdf-view-revert-on-save ()
-    (dolist (buf (buffer-list))
-      (with-current-buffer buf
-        (when (eq major-mode 'pdf-view-mode)
-          (my-pdf-view-revert-buffer-repeatedly buf my-pdf-revert-attempts)))))
+    (when (derived-mode-p 'pdf-view-mode)
+      (when (timerp my-pdf-revert-timer)
+        (cancel-timer my-pdf-revert-timer))
+      (setq my-pdf-revert-timer
+            (run-with-timer
+             0 nil #'my-pdf-view-revert-buffer-repeatedly
+             (current-buffer) my-pdf-revert-attempts))))
+  ;;
   (add-hook 'after-save-hook #'my-pdf-view-revert-on-save))
 
 ;; Window divider configuration
-(use-package! framemove
+(use-package! framemove :config (setq framemove-hook-into-windmove t))
+
+;; Rainbow-Delimiters configuration
+(use-package! rainbow-delimiters :hook (prog-mode . rainbow-delimiters-mode))
+
+;; Orderless is a flexible completion style in 'M-x':
+;; - You can type multiple space-separated substrings to match in any order.
+;; - Example: typing 'ff bu' might fuzzy-match 'buffer-file-format' because it contains 'ff' and 'bu'
+;; Keybindings: None.
+(use-package! orderless
+  :when (modulep! :completion vertico) ;; only load if using vertico
+  :init
+  ;; Configure the completion styles
+  (setq completion-styles '(orderless)
+        completion-category-defaults nil
+        ;; enable partion-completion for file paths:
+        completion-category-overrides '((file (styles orderless partial-completion)))))
+
+;; Marginalia adds better annotations to completion candidates in 'M-x'
+;; Keybindings: None.
+(use-package! marginalia
+  :after vertico
+  :init
+  (marginalia-mode))
+
+;; COMPANY BOX
+(use-package! company-box
+  :hook (company-mode . company-box-mode)
+  :init
+  ;; If you want the documentation popup:
+  (setq company-box-doc-enable t)
   :config
-  (setq framemove-hook-into-windmove t))
+  ;; Optional: tweak popup settings
+  (setq company-box-doc-delay 0.3
+        company-box-doc-frame-parameters '((internal-border-width . 1)
+                                           (left-fringe . 8)
+                                           (right-fringe . 8))))
