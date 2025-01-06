@@ -55,6 +55,13 @@
 
   services.xserver = { xkb.layout = "ch"; };
 
+  # Virtualbox stuff
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  users.extraGroups.vboxusers.members = [ "domi" ];
+  users.users.domi.extraGroups = [ "vboxusers" ];
+  nixpkgs.config.allowUnfree = true;
+
   xdg.portal.enable = true;
   xdg.portal.wlr.enable = true; # screen sharing
   xdg.portal.extraPortals = with pkgs; [

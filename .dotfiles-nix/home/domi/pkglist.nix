@@ -90,7 +90,7 @@ in {
     discord
     p3x-onenote
     libreoffice
-    virtualbox
+    # virtualbox
     xournalpp
 
     # [TERMINAL] prompts, ...
@@ -298,6 +298,8 @@ in {
     udev-gothic-nf
     liberation_ttf
     arkpandora_ttf
+
+    # virtualbox
 
     # [STEAM]
     protonup-qt
