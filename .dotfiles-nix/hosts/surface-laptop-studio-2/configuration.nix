@@ -36,8 +36,8 @@
   powerManagement.enable = lib.mkDefault true;
 
   # Enable some logitech stuff
-  hardware.logitech.wireless.enable = true;
-  hardware.logitech.lcd.enable = true;
+  # hardware.logitech.wireless.enable = true; # TMP DOMI REMOVE
+  # hardware.logitech.lcd.enable = true; # TMP DOMI REMOVE
 
   # Add packages important for surface device
   environment.systemPackages = with pkgs; [
