@@ -13,6 +13,7 @@
 (setq doom-theme 'doom-pine) ; doom-flatwhite,leuven-dark,doom-snazzy, doom-one
 
 ;; QUICK CONFIG ONELINERS
+(setq confirm-kill-emacs nil)
 (setq display-line-numbers-type 'relative) ; nil
 (after! lsp-mode (setq lsp-log-io t)) ; enable IO logging for lsp
 (setq avy-all-windows t) ; move to words with 'g-s-SPC'
