@@ -1,7 +1,3 @@
-#!/bin/bash
-
-notify-send "Deez Nutz"
-
 # Save the current IFS
 OLD_IFS=$IFS
 
@@ -24,4 +20,3 @@ fi
 
 # Restore the original IFS
 IFS=$OLD_IFS
-
