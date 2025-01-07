@@ -9,10 +9,18 @@
       doom-symbol-font (font-spec :family "UDEV Gothic" :size 20)
       doom-serif-font (font-spec :family "UDEV Gothic" :weight 'light))
 
+;; CURSOR
+(setq x-pointer-shape nil)
+(setq x-pointer-foregroud-color "black")
+(setq x-pointer-background-color "white")
+
 ;; THEME
 (setq doom-theme 'doom-pine) ; doom-flatwhite,leuven-dark,doom-snazzy, doom-one
 
 ;; QUICK CONFIG ONELINERS
+(setq comp-deferred-compilation t) ; native compilation speeds things up a bit
+(setq async-bytecomp-allowed-packages '(all)) ; async package loading is faster
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-footer) ; less initial dashboard loading
 (setq confirm-kill-emacs nil)
 (setq display-line-numbers-type 'relative) ; nil
 (after! lsp-mode (setq lsp-log-io t)) ; enable IO logging for lsp
@@ -25,9 +33,9 @@
 (after! projectile (setq projectile-project-root-files-bottom-up (remove ".git" projectile-project-root-files-bottom-up))) ; since we have --bare repo in $HOME we need to tweak this
 
 ;; DIRED
-(evil-define-key 'normal dired-mode-map (kbd "h") 'dired-up-directory
-  (kbd "l") 'dired-open-file
-  )
+(evil-define-key 'normal dired-mode-map
+  (kbd "h") 'dired-up-directory
+  (kbd "l") 'dired-open-file)
 
 ;; Typst
 ;; Execute this once 'SPC-o-E':
@@ -66,12 +74,11 @@
 ;; Direnv - should be enabled by init.el...
 ;; (use-package! direnv :config (direnv-mode))
 
-;; PDF configuration
-(pdf-loader-install)
-
 ;; PDF autorealoading
 (use-package! pdf-tools
+  :defer t
   :config
+  (pdf-loader-install)
   (add-hook 'pdf-view-mode-hook 'auto-revert-mode)
   (setq-default pdf-view-display-size 'fit-page)
   (setq pdf-view-use-scaling t

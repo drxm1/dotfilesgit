@@ -41,6 +41,7 @@
     ../system/services/openssh.nix
     ../system/services/iptsd.nix
     ../system/services/preload.nix
+    ../system/services/emacs_daemon.nix
 
     ../system/programs/steam.nix
     ../system/programs/npm.nix

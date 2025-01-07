@@ -81,16 +81,15 @@ let
     @define-color dark_4 mix(#282828,black,0.2);
     @define-color dark_5 mix(#282828,black,0.4);
   '';
-in 
-{
+in {
   gtk.enable = true;
- 
+
   ### GTK THEME ###
   gtk.theme = {
-        package = pkgs.adw-gtk3;
-        name = "adw-gtk3";
-        #name = "Materia-dark";
-        #package = pkgs.materia-theme;
+    package = pkgs.adw-gtk3;
+    name = "adw-gtk3";
+    #name = "Materia-dark";
+    #package = pkgs.materia-theme;
   };
   gtk.gtk4.extraCss = extraCssGtk34;
   gtk.gtk3.extraCss = extraCssGtk34;
@@ -107,8 +106,13 @@ in
   # regular way
   gtk.cursorTheme.package = pkgs.bibata-cursors;
   # basically same as line above
-  home.file.".icons/bibata".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
+  home.file.".icons/bibata".source =
+    "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Ice";
   # both cases still need to select theme name
   gtk.cursorTheme.name = "Bibata-Modern-Ice";
+  home.sessionVariables = {
+    XCURSOR_THEME = "Bibata-Modern-Ice";
+    XCURSOR_SIZE = 24;
+  };
   ####################
 }

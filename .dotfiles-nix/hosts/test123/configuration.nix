@@ -20,10 +20,7 @@
   };
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "modesetting" "nvidia" ];
-  # systemd.services.nvidia-control-devices = {
-  # wantedBy = [ "multi-user.target" ];
-  # serviceConfig.ExecStart = "${pkgs.linuxPackages.nvidia_x11}/bin/nvidia-smi";
-  # };
+
   hardware.nvidia = {
     # Modesetting is required
     modesetting.enable = true;

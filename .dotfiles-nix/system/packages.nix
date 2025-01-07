@@ -95,7 +95,7 @@
 
     # [OS]
     # emacs-git # =emacsGcc (see overlays) installs emacs 28 + native-comp
-    emacs30
+    emacs30-pgtk
 
     # [WIRELESS] utils, ...
     iw
