@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, domiHomeOptions, ... }:
 
 let
   username = "domi";
@@ -26,21 +26,10 @@ in {
     inputs.ags.homeManagerModules.default
   ];
 
-  # TODO this can probably be removed we use ags now
-  home.activation.createConfigLink =
-    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      ln -sfn /home/domi/.dotfiles-nix/home/domi/dotconfig/eww $HOME/.config/eww
-    ''; # Create a (for some reason readonly) symbolic link. for some reason also not editable here...
-
   programs.gpg = { enable = true; };
   services.gpg-agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-qt;
   };
-
-  # Direnv and Lorri
-  # run 'lorri init' in the project roots
-  # don't forget to also add a .projectile file and projectile-discover
-  services.lorri.enable = true;
 
 }

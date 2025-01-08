@@ -13,6 +13,7 @@
 
   domiOptions.gpu.intelBusId = "PCI:0:2:0";
   domiOptions.gpu.nvidiaBusId = "PCI:243:0:0";
+  domiOptions.systemType = "laptop";
 
   fileSystems."/" = {
     device = lib.mkDefault "/dev/nvme0n1p3";

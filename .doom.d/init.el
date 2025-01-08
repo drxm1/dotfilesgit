@@ -13,7 +13,7 @@
        nav-flash ; blink cursor line after big motions
        ophints ; highlight the region an operation acts on
        unicode ; extended unicode support for various languages
-       (popup +defaults) ; tame sudden yet inevitable temporary windows
+       (popup +all +defaults) ; tame sudden yet inevitable temporary windows
        (vc-gutter +pretty) ; render version control changes in the buffer fringe with icons
        vi-tilde-fringe ; fringe tildes to mark beyond end of buffer
        treemacs ; a project drawer, like neotree but cooler

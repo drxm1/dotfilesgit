@@ -31,10 +31,10 @@ cp $HOME/.dotfiles-nix/hosts/pc-ksteg/configuration.nix $HOME/.dotfiles-nix/host
 Then update `flake.nix` to create a new `nixosConfiguration`.
 
 ### 5. Activate the system:
-Make sure to use your configuration name or it will fail, due to the current way we import `hardware-configuration.nix`.
+Make sure to use your configuration name or it will fail, due to the current way we import `hardware-configuration.nix`. Currently we manage home-manager also with multiple configurations like described in https://drakerossman.com/blog/how-to-add-home-manager-to-nixos#how-to-add-home-manager-to-your-system.
 ```sh
 cd $HOME/.dotfiles-nix && sudo nixos-rebuild switch --flake .#<YOUR-NIXOS-CONFIGURATION-NAME>
-cd $HOME/.dotfiles-nix && home-manager switch -b backup --flake .
+cd $HOME/.dotfiles-nix && home-manager switch -b backup --flake .#<YOUR-HOME-CONFIGURATION-NAME>
 reboot
 ```
 On the first boot, sometimes SDDM does not load, in which case you can press `Alt+F1` to log in via shell, and get into the WM by executing `Hyprland` from there.
@@ -79,6 +79,7 @@ If not, do some cleanup and try again.
 ### 9. Install other stuff
 The other stuff here should really be installed declaratively with nixos but for now I was too lazy so just execute these in the end:
 
+TODO: The following (typst-lsp) of nvarner we are removing in favor of tinymist which we directly install using nixos.
 ``` sh
 cargo install --git https://github.com/nvarner/typst-lsp typst-lsp
 ```

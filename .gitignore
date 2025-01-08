@@ -20,6 +20,9 @@
 .zsh_history
 .gtkrc-2.0
 
+# Managed by Nixos as a linked file:
+.config/hypr/hypridle.conf
+
 # Root-level hidden directories
 VirtualBox\ VMs/
 .config/VirtualBox/

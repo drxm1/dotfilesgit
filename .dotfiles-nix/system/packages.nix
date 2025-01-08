@@ -97,6 +97,9 @@
     # emacs-git # =emacsGcc (see overlays) installs emacs 28 + native-comp
     emacs30-pgtk
 
+    # The new Typst lsp
+    tinymist
+
     # [WIRELESS] utils, ...
     iw
     iwd

@@ -69,9 +69,8 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      ## NIX CONFIGURATIONS
       nixosConfigurations = {
-        ###### Surface Laptop Studio 2 ######
+
         laptop = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
@@ -90,9 +89,7 @@
             })
           ];
         };
-        #####################################
 
-        ########### PC Ksteg ################
         pc = lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs; };
@@ -105,17 +102,26 @@
             })
           ];
         };
-        #####################################
       };
 
-      ## HOME CONFIGURATIONS
       homeConfigurations = {
-        domi = home-manager.lib.homeManagerConfiguration {
+        domi-pc = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
+          extraSpecialArgs = {
+            inherit inputs;
+            domiHomeOptions = { systemType = "pc"; };
+          };
+          modules = [ ./home.nix ];
+        };
+
+        domi-laptop = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit inputs;
+            domiHomeOptions = { systemType = "laptop"; };
+          };
           modules = [ ./home.nix ];
         };
       };
     };
-  ##############################################################################################
 }

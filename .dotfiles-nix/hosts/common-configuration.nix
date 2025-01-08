@@ -47,6 +47,8 @@
     ../system/programs/npm.nix
     ../system/programs/hyprland.nix
     ../system/programs/thunar.nix
+
+    ./domiOptions.nix
   ];
 
   # Enable i2c support and install i2c-tools, load i2c-dev module
